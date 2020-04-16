@@ -178,7 +178,6 @@ mongoose
   .then(result => {
     const port_number = server.listen(process.env.PORT || 3000);
     app.listen(port_number);
-    app.listen(port_number);
   })
   .catch(err => {
     console.log(err);
