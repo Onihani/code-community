@@ -1,0 +1,94 @@
+extends ../layouts/author-main-layout.pug
+
+block assertJs
+  script(src="https://unpkg.com/sweetalert/dist/sweetalert.min.js" defer)
+
+block customCss
+  link(rel="stylesheet", href="/css/single-post.css")
+
+block mainContent
+  .content
+    // single posts
+    .row
+      .col-md-12
+        .card.custom-card.full-height-card
+          .card-header
+            h5.card-title Post Preview
+            //- p.card-category
+            //-   | Showing All Posts
+          .card-body
+            .container-fluid
+              .post-preview-wrapper
+                // Purple Header
+                .edge-header(style=("background: url('/" +  post.imageUrl + "');"))
+                // Main Container
+                .container
+                  .row
+                    .col-md-8.col-lg-9.float-none.white.p-2                     
+                      .card-body
+                        h2.h1-responsive.font-weight-bolder
+                          strong #{post.title}
+                        p.pb-4.lead #{post.summary}
+                        article.preview-post-content.p-2!= post.content
+                    .col-md-4.col-lg-3.float-none.white.p-2                     
+                      .share-post.mt-4.mb-5
+                        h4.h3-responsive.px-2 
+                          i.fal.fa-share-all.mr-2
+                          | Share
+                        .d-flex.justify-content-start.align-items-center
+                          a.btn.border.border-2.border-light.d-inline-flex.justify-content-center.px-3.py-2.rounded-circle.btn-floating.mdb-color(type='button')
+                            i.fa-2x.fab.fa-facebook-f(aria-hidden='true')
+                          a.btn.border.border-2.border-light.d-inline-flex.justify-content-center.px-3.py-2.rounded-circle.btn-floating.light-blue(type='button')
+                            i.fa-2x.fab.fa-twitter(aria-hidden='true')
+                          a.btn.border.border-2.border-light.d-inline-flex.justify-content-center.px-3.py-2.rounded-circle.btn-floating.pink(type='button')
+                            i.fa-2x.fab.fa-instagram(aria-hidden='true')
+                          a.btn.border.border-2.border-light.d-inline-flex.justify-content-center.px-3.py-2.rounded-circle.btn-floating.green(type='button')
+                            i.fa-2x.fab.fa-whatsapp(aria-hidden='true')
+                      .preview-post-tags.mb-5
+                        h4.h3-responsive.px-2 
+                          i.fal.fa-hashtag.mr-2
+                          | Tags
+                        .d-flex.flex-wrap
+                          each tag in post.tags
+                            .md-chip.md-chip-hover.md-chip-clickable #{tag}
+                      .preview-post-author
+                        h4.h3-responsive.px-2 
+                          i.fal.fa-user-secret.mr-2
+                          | Author
+                        .author-card.rounded.shadow-sm
+                          .author-profile-image
+                            img(src=(author.profileImages.avatarImg), alt="authur avatar" , class="rounded-circle")
+                          .author-title
+                            a.text-muted
+                              h4.h4-responsive #{author.name}
+                            p.text-muted  Author
+                          .author-text #{author.about}
+                          .author-social
+                            each handle in Object.keys(author.socialHandles.handles)
+                              if author.socialHandles.handles[handle]
+                                a(href=author.socialHandles.handles[handle] target="_blank" class=((handle == 'facebook') ? 'text-primary' : (handle == 'twitter') ? 'text-info' : 'text-danger'))
+                                  i(class=("fab fa-"+handle))
+                      hr.my-3
+                // /.Main Container
+                //- related posts
+                .container-fluid
+                  h2.my-4.font-weight-light Related Posts
+                  .grid
+                    .grid-sizer
+                    each relatedPost in relatedPosts
+                      .grid-item
+                        .card
+                          .view.overlay
+                            img.card-img-top(src=("/" + relatedPost.imageUrl) alt=post.title)
+                            a(href="")
+                              .mask.rgba-white-slight
+                          .card-body
+                            h5.card-title.h5 #{relatedPost.title}.
+                            p.card-text #{relatedPost.summary}
+                          .card-footer.p-1
+                            .recent-post-actions.clearfix
+                              span.float-right.py-1.px-2.text-muted
+                                i.fal.fa-stopwatch.mr-1
+                                small 10 mins read
+                    
+                    

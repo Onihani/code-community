@@ -1,0 +1,62 @@
+extends ../layouts/author-main-layout.pug
+
+block assertJs
+  script(src="https://unpkg.com/sweetalert/dist/sweetalert.min.js" defer)
+
+block mainContent
+  .content
+    // All posts
+    .row
+      .col-md-12
+        .card.custom-card.full-height-card
+          .card-header
+            h5.card-title Posts
+            p.card-category
+              | Showing All Posts
+          .card-body
+            .container-fluid
+              // posts area
+              if Array.isArray(posts) && posts.length
+                .grid
+                  .grid-sizer
+                  each post in posts
+                    .grid-item
+                      .card
+                        .view.overlay
+                          img.card-img-top(src=("/" + post.imageUrl) alt=post.title)
+                          a(href='/author/single-post/' + post._id)
+                            .mask.rgba-white-slight
+                        .card-body
+                          .post-detials.clearfix
+                            small.float-left Posted on
+                            small.float-right #{prettifyDate(post.postTime.dataAdded)}
+                          h5.card-title.h5 #{post.title}
+                          p.card-text
+                            | #{post.summary}
+                          .stats.clearfix
+                            small.float-left
+                              i.far.fa-clock.mr-1 
+                              | last edited #{timeSinceDate(post.postTime.lastModified)} ago
+                            small.post-views.float-right
+                              i.far.fa-eye
+                              | 8 views
+                        .card-footer.p-1
+                          hr.my-0
+                          .recent-post-actions.clearfix
+                            input(type="hidden", name="postId" value=post._id)
+                            input(type="hidden", name="_csrf" value=csrfToken)
+                            a.btn.btn-primary.btn-sm(href=('/author/edit-post/' + post._id + '?edit=true'))
+                              i.fas.fa-edit.mr-1
+                              |  Edit
+                            button.btn.btn-danger.btn-sm.float-right(type="submit" onclick="deletePost(this)")
+                              i.fas.fa-trash-alt.mr-1
+                              |  Delete
+              else
+                h2.text-warning You don't have Any Posts Yet
+                p Add a post from the 
+                  a(href="/author/create-post")
+                    span.lead
+                      | &nbsp;
+                      i.fal.fa-pencil-alt 
+                      | &nbsp;
+                      | Create Post Tab

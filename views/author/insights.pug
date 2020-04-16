@@ -1,0 +1,86 @@
+extends ../layouts/author-main-layout.pug
+
+block assertCss
+  link(rel="stylesheet", href="/asserts/DataTables/datatables.min.css")
+
+block customCss
+  link(rel="stylesheet", href="/css/insights.css")
+
+block assertJs
+  script(src="/asserts/DataTables/datatables.min.js" defer)
+
+block customJs
+  script(src="/js/insights.js" defer)
+
+block mainContent
+  .content
+    // All notifications
+    .row
+      .col-md-12
+        .card.custom-card.full-height-card
+          .card-header
+            h5.card-title Insights
+            p.card-category
+              | All Insights
+          .card-body
+            .container-fluid
+              h4.title Total Insights
+              .row
+                .col-md-6.col-lg-4
+                  .card.card.custom-card.card-stats
+                    .card-body
+                      .row
+                        .col-5.col-md-4
+                          .icon-big.text-center.icon-warning
+                            i.fal.fa-newspaper.text-warning
+                        .col-7.col-md-8
+                          .numbers
+                            p.card-category Posts Views
+                            p.card-title #{posts.reduce((accum, current) => (accum += current.views), 0)}
+                            p
+                .col-md-6.col-lg-4
+                  .card.card.custom-card.card-stats
+                    .card-body
+                      .row
+                        .col-5.col-md-4
+                          .icon-big.text-center.icon-default
+                            i.fal.fa-comment.text-default
+                        .col-7.col-md-8
+                          .numbers
+                            p.card-category Total Comments
+                            p.card-title 5
+                            p
+                .col-md-6.col-lg-4
+                  .card.card.custom-card.card-stats
+                    .card-body
+                      .row
+                        .col-5.col-md-4
+                          .icon-big.text-center.icon-secondary
+                            i.fal.fa-address-card.text-secondary
+                        .col-7.col-md-8
+                          .numbers
+                            p.card-category Profile Visits
+                            p.card-title #{profileVisits}
+                            p
+              hr
+              h4.title.mb-4 Posts Insights
+              .post-insight-area
+                table#insightTable.table-hover.table-striped
+                  thead.thead-light
+                    tr
+                      th Date Posted
+                      th Post
+                      th Views
+                      th Comments
+                  tbody
+                    each post in posts
+                      tr
+                        td.font-weight-500 #{prettifyDate(post.postTime.dataAdded)}
+                        td.max-w-auto
+                          .media
+                            img.d-flex.mr-3.img-fluid(src=('/' + post.imageUrl) alt='Post Image')
+                            .media-body
+                              h6.mt-0.mb-2 #{post.title}
+                              | #{post.summary}
+                        td.lead.font-weight-500 #{post.views}
+                        td.lead.font-weight-500 0

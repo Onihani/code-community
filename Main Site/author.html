@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Blogy | Articles</title>
+    <!-- ========== CSS ========= -->
+     <!-- Fonts -->
+     <link
+        href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200"
+        rel="stylesheet"
+      />
+      <!-- Bootstrap core CSS -->
+      <link rel="stylesheet" href="asserts/mdb4/css/bootstrap.min.css" />
+      <!-- Material Design Bootstrap -->
+      <link rel="stylesheet" href="asserts/mdb4/css/mdb.min.css" />
+      <!-- Font Awesome -->
+      <link rel="stylesheet" href="asserts/fontawesome/css/all.css" />
+      <!-- Animate Css -->
+      <link rel="stylesheet" href="asserts/animatecss/animate.css" />
+      <!-- Material Icons -->
+      <link
+        href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        rel="stylesheet"
+      />
+      <!-- Owl Carousel -->
+      <link rel="stylesheet" href="asserts/owlcarousel/assets/owl.carousel.min.css">
+      <link rel="stylesheet" href="asserts/owlcarousel/assets/owl.theme.default.min.css">
+    <!-- Custom -->
+    <link rel="stylesheet" href="./css/main-blog.css" />
+    <link rel="stylesheet" href="./css/blog-posts.css" />
+
+    <!-- ========== JS ========== -->
+    <script
+      type="text/javascript"
+      src="asserts/mdb4/js/jquery.min.js"
+      defer
+    ></script>
+    <!-- Bootstrap tooltips -->
+    <script
+      type="text/javascript"
+      src="asserts/mdb4/js/popper.min.js"
+      defer
+    ></script>
+    <!-- Bootstrap core JavaScript -->
+    <script
+      type="text/javascript"
+      src="asserts/mdb4/js/bootstrap.min.js"
+      defer
+    ></script>
+    <!-- MDB core JavaScript -->
+    <script
+      type="text/javascript"
+      src="asserts/mdb4/js/mdb.min.js"
+      defer
+    ></script>
+    <!-- Owl Carousel -->
+    <script src="asserts/owlcarousel/owl.carousel.min.js" defer></script>
+    <!-- Masonry -->
+    <script type="text/javascript" src="asserts/mdb4/js/addons/masonry.pkgd.min.js" defer></script>
+    <script type="text/javascript" src="asserts/mdb4/js/addons/imagesloaded.pkgd.min.js" defer></script>
+    <!-- Custom -->
+    <script src="js/blog-author.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <!--Navbar-->
+      <nav class="navbar navbar-color-on-scroll navbar-expand-lg navbar-light px-5 py-3 mb-3" id="mainNavbar">
+        <div class="container">
+          <div class="navbar-translate">
+              <a class="navbar-brand text-reste" href="https://material-blog-pro-laravel.creative-tim.com">
+                Blogy
+              </a>
+              <button class="navbar-toggler navbar-toggler-main" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation" data-target="#sectionsNav">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
+              </button>
+          </div>
+          <div class="collapse navbar-collapse" id="sectionsNav">
+              <ul class="navbar-nav ml-auto">
+                <li class="button-container dropdown nav-item mr-lg-2">
+                  <a href="" target="_blank" class="btn btn-info btn-round btn-block dropdown-toggle" data-toggle="dropdown">
+                    Login as
+                  </a>
+                  <div class="dropdown-menu dropdown-with-icons">
+                      <form method="get" action="https://material-blog-pro-laravel.creative-tim.com/login" style="display: none;" id="loginForm">
+                          <input type="text" value="" name="role" id="roleType">
+                      </form>
+                      <a href="#" class="dropdown-item mx-2" onclick="document.getElementById('roleType').value='2';
+                        document.getElementById('loginForm').submit();">
+                          <strong>Author</strong>&nbsp;to manage articles
+                      </a>
+                      <a href="#" class="dropdown-item mx-2" onclick="document.getElementById('roleType').value='3';
+                        document.getElementById('loginForm').submit();">
+                          <strong>Member</strong>&nbsp;to comment
+                      </a>
+                  </div>
+                  </li>
+                  <li class="button-container nav-item">
+                    <a href="#" target="_blank" class="btn btn-pink btn-round btn-block">
+                      <i class="material-icons">forum</i> Community
+                    </a>
+                  </li>
+              </ul>
+          </div>
+        </div>
+      </nav>
+      <!--/.Navbar-->
+
+      <!-- Main Blogy Container -->
+      <div class="container-fluid shadow-sm">
+        <div class="row">
+          <div class="col-11 col-md-10 col-lg-11 mx-auto float-none white z-depth-3 rounded px-0">
+            <!-- blogy-posts-main-nav -->
+            <nav class="navbar navbar-expand-lg navbar-grey bg-white navbar-text-gray rounded-top mb-5">
+              <div class="container">
+                  <div class="navbar-translate">
+                      <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation" data-target="#pagesNav">
+                          <span class="sr-only">Toggle navigation</span>
+                          <span class="navbar-toggler-icon"></span>
+                          <span class="navbar-toggler-icon"></span>
+                          <span class="navbar-toggler-icon"></span>
+                      </button>
+                      <span class="float-left menu d-lg-none">Menu</span>
+                  </div>
+                  <div class="collapse navbar-collapse" id="pagesNav">
+                    <ul class="navbar-nav">
+                      <li class="nav-item">
+                        <a href="#" class="nav-link"><strong>Programming</strong></a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="#" class="nav-link"><strong>Codenotes</strong></a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="#" class="nav-link"><strong>How To</strong></a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="#" class="nav-link"><strong>Motivation</strong></a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="#" class="nav-link"><strong>Inspiration</strong></a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="#" class="nav-link"><strong>Code Challange</strong></a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="#" class="nav-link"><strong>All Articles</strong></a>
+                      </li>
+                    </ul>
+                      <form action="https://material-blog-pro-laravel.creative-tim.com/search" class="form-inline ml-auto">
+                        <div class="form-group">
+                          <div class="md-form my-0">
+                            <input type="text" class="form-control form-control-sm" name="searching" placeholder="Search">
+                          </div>
+                        </div>
+                        <button type="submit" style="margin-right: 30px; font-size: 18px;" class="btn btn-white btn-just-icon btn-round">
+                          <i class="material-icons">search</i>
+                        </button>
+                      </form>
+                  </div>
+              </div>
+            </nav>
+            <!-- /blogy-posts-main-nav -->
+
+            <div class="section">
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-11 mx-auto">
+                    <!-- Post Author Section -->
+                    <h2 class="title">Author</h2>
+                    <div class="card card-plain mt-5">
+                      <!-- Author Profile card -->
+                      <div class="row">
+                        <div class="col-md-9 col-lg-6 mx-auto">
+                          <div class="card mb-5 border-0 shadow-none">
+                            <div class="card-header p-0 border-0" style="z-index: 1000; position: relative;">
+                              <img src="https://source.unsplash.com/random/500×500?creator,artist,author,writter" class="img-fluid z-depth-2" alt="Auhtor Avatar" style="width: 100%; max-height: 300px; border-radius: 8px;">
+                            </div>
+                            <div class="card-body" style="margin-top: -50px;">
+                              <div class="row">
+                                <div class="col-11 col-md-11 z-depth-1 mx-auto rounded text-center" style="padding-top: 40px; padding-bottom: 30px;">
+                                  <h4 class="card-title title">Alison Belmont</h4>
+                                  <p class="card-text text-muted">
+                                    Sed ut perspiciatis unde omnis iste natus sit voluptatem accusantium doloremque laudantium, totam rem aperiam. Lorem ipsum dolor sit amet.
+                                  </p>
+                                  <div class="follow-author">
+                                    <h6 class="title mb-3">Get Interactive</h6>
+                                    <div class="d-flex justify-content-center justify-items-center font-18">
+                                      <a class="px-2 fa-lg li-ic mx-sm-2 text-primary"><i class="fab fa-facebook-f"></i></a>
+                                      <a class="px-2 fa-lg li-ic mx-sm-2 text-info"><i class="fab fa-twitter"></i></a>
+                                      <a class="px-2 fa-lg li-ic mx-sm-2 text-danger"><i class="fab fa-instagram"></i></a>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- /Author Profile card -->
+
+                      <!-- Posts From Author -->
+                      <h3 class="title">Posts From <b>Alison Belmont</b></h3>
+                      <div class="owl-carousel mt-5">
+                        <div class="py-2 px-custom-4 border rounded shadow">
+                          <div class="card card-plain">
+                            <div class="card-header bg-white p-0 border-0">
+                              <a href="#" class="card-header-img">
+                                <img src="https://source.unsplash.com/random/1200×400/?javascript" alt="" class="img-raised effect5 img-fuild">
+                              </a>
+                            </div>
+                            <div class="card-body">
+                              <h6 class="card-category mt-0">
+                                <a href="#" class="grey-text text-uppercase">
+                                  <small>Programming</small>
+                                </a>
+                              </h6>
+                              <h4 class="card-title font-18">
+                                <a href="#" class="text-reset">6 apps you can start building right away with the Laravel bundle</a>
+                              </h4>
+                              <p class="card-tags">
+                                <a href="#"><span class="badge badge-pill">Web dev</span></a>
+                                <!-- <a href="#"><span class="badge badge-pill">Admin dashboards</span></a> -->
+                              </p>
+                              <p class="card-description">
+                                Like so many organizations these days, Autodesk is a company in transition. It was until recently a traditional boxed software company selling licenses.
+                                <a href="#" class="purple-text">Read More</a>
+                              </p>
+                              <div class="clearfix">
+                                <div class="author float-left d-flex justify-content-center align-items-center">
+                                  <a href="#">
+                                    <img src="https://source.unsplash.com/random/1200×400/?user" alt="author" class="rounded-circle post-author-img border mr-2">
+                                  </a>
+                                  <a href="#" class="text-default"><b>John Doe</b></a>
+                                </div>
+                                <div class="read-time float-right text-muted">
+                                  <i class="fal fa-watch"></i>
+                                  3 mins read
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="py-2 px-custom-4 border rounded shadow">
+                          <div class="card card-plain">
+                            <div class="card-header bg-white p-0 border-0">
+                              <a href="#" class="card-header-img">
+                                <img src="https://source.unsplash.com/random/1200×400/?vue" alt="" class="img-raised effect5 img-fuild">
+                              </a>
+                            </div>
+                            <div class="card-body">
+                              <h6 class="card-category mt-0">
+                                <a href="#" class="grey-text text-uppercase">
+                                  <small>Programming</small>
+                                </a>
+                              </h6>
+                              <h4 class="card-title font-18">
+                                <a href="#" class="text-reset">6 apps you can start building right away with the Laravel bundle</a>
+                              </h4>
+                              <p class="card-tags">
+                                <a href="#"><span class="badge badge-pill">Web dev</span></a>
+                                <!-- <a href="#"><span class="badge badge-pill">Admin dashboards</span></a> -->
+                              </p>
+                              <p class="card-description">
+                                Like so many organizations these days, Autodesk is a company in transition. It was until recently a traditional boxed software company selling licenses.
+                                <a href="#" class="purple-text">Read More</a>
+                              </p>
+                              <div class="clearfix">
+                                <div class="author float-left d-flex justify-content-center align-items-center">
+                                  <a href="#">
+                                    <img src="https://source.unsplash.com/random/1200×400/?user" alt="author" class="rounded-circle post-author-img border mr-2">
+                                  </a>
+                                  <a href="#" class="text-default"><b>John Doe</b></a>
+                                </div>
+                                <div class="read-time float-right text-muted">
+                                  <i class="fal fa-watch"></i>
+                                  3 mins read
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="py-2 px-custom-4 border rounded shadow">
+                          <div class="card card-plain">
+                            <div class="card-header bg-white p-0 border-0">
+                              <a href="#" class="card-header-img">
+                                <img src="https://source.unsplash.com/random/1200×400/?css" alt="" class="img-raised effect5 img-fuild">
+                              </a>
+                            </div>
+                            <div class="card-body">
+                              <h6 class="card-category mt-0">
+                                <a href="#" class="grey-text text-uppercase">
+                                  <small>Programming</small>
+                                </a>
+                              </h6>
+                              <h4 class="card-title font-18">
+                                <a href="#" class="text-reset">6 apps you can start building right away with the Laravel bundle</a>
+                              </h4>
+                              <p class="card-tags">
+                                <a href="#"><span class="badge badge-pill">Web dev</span></a>
+                                <!-- <a href="#"><span class="badge badge-pill">Admin dashboards</span></a> -->
+                              </p>
+                              <p class="card-description">
+                                Like so many organizations these days, Autodesk is a company in transition. It was until recently a traditional boxed software company selling licenses.
+                                <a href="#" class="purple-text">Read More</a>
+                              </p>
+                              <div class="clearfix">
+                                <div class="author float-left d-flex justify-content-center align-items-center">
+                                  <a href="#">
+                                    <img src="https://source.unsplash.com/random/1200×400/?user" alt="author" class="rounded-circle post-author-img border mr-2">
+                                  </a>
+                                  <a href="#" class="text-default"><b>John Doe</b></a>
+                                </div>
+                                <div class="read-time float-right text-muted">
+                                  <i class="fal fa-watch"></i>
+                                  3 mins read
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="py-2 px-custom-4 border rounded shadow">
+                          <div class="card card-plain">
+                            <div class="card-header bg-white p-0 border-0">
+                              <a href="#" class="card-header-img">
+                                <img src="https://source.unsplash.com/random/1200×400/?java" alt="" class="img-raised effect5 img-fuild">
+                              </a>
+                            </div>
+                            <div class="card-body">
+                              <h6 class="card-category mt-0">
+                                <a href="#" class="grey-text text-uppercase">
+                                  <small>Programming</small>
+                                </a>
+                              </h6>
+                              <h4 class="card-title font-18">
+                                <a href="#" class="text-reset">6 apps you can start building right away with the Laravel bundle</a>
+                              </h4>
+                              <p class="card-tags">
+                                <a href="#"><span class="badge badge-pill">Web dev</span></a>
+                                <!-- <a href="#"><span class="badge badge-pill">Admin dashboards</span></a> -->
+                              </p>
+                              <p class="card-description">
+                                Like so many organizations these days, Autodesk is a company in transition. It was until recently a traditional boxed software company selling licenses.
+                                <a href="#" class="purple-text">Read More</a>
+                              </p>
+                              <div class="clearfix">
+                                <div class="author float-left d-flex justify-content-center align-items-center">
+                                  <a href="#">
+                                    <img src="https://source.unsplash.com/random/1200×400/?user" alt="author" class="rounded-circle post-author-img border mr-2">
+                                  </a>
+                                  <a href="#" class="text-default"><b>John Doe</b></a>
+                                </div>
+                                <div class="read-time float-right text-muted">
+                                  <i class="fal fa-watch"></i>
+                                  3 mins read
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="py-2 px-custom-4 border rounded shadow">
+                          <div class="card card-plain">
+                            <div class="card-header bg-white p-0 border-0">
+                              <a href="#" class="card-header-img">
+                                <img src="https://source.unsplash.com/random/1200×400/?html" alt="" class="img-raised effect5 img-fuild">
+                              </a>
+                            </div>
+                            <div class="card-body">
+                              <h6 class="card-category mt-0">
+                                <a href="#" class="grey-text text-uppercase">
+                                  <small>Programming</small>
+                                </a>
+                              </h6>
+                              <h4 class="card-title font-18">
+                                <a href="#" class="text-reset">6 apps you can start building right away with the Laravel bundle</a>
+                              </h4>
+                              <p class="card-tags">
+                                <a href="#"><span class="badge badge-pill">Web dev</span></a>
+                                <!-- <a href="#"><span class="badge badge-pill">Admin dashboards</span></a> -->
+                              </p>
+                              <p class="card-description">
+                                Like so many organizations these days, Autodesk is a company in transition. It was until recently a traditional boxed software company selling licenses.
+                                <a href="#" class="purple-text">Read More</a>
+                              </p>
+                              <div class="clearfix">
+                                <div class="author float-left d-flex justify-content-center align-items-center">
+                                  <a href="#">
+                                    <img src="https://source.unsplash.com/random/1200×400/?user" alt="author" class="rounded-circle post-author-img border mr-2">
+                                  </a>
+                                  <a href="#" class="text-default"><b>John Doe</b></a>
+                                </div>
+                                <div class="read-time float-right text-muted">
+                                  <i class="fal fa-watch"></i>
+                                  3 mins read
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="text-center">
+                        <a href="#" class="btn btn-pink btn-sm btn-raised btn-round">
+                          View All
+                        </a>
+                      </div>
+                      <!-- /Post From Author -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <!-- /Main Blogy Container -->
+
+      <!-- Main Blogy Footer -->
+      <footer class="footer big-footer footer-white">
+        <div class="container">
+          <div class="content">
+            <div class="row">
+              <div class="col-md-3">
+                <h5 class="title">Authors</h5>
+                <ul class="links-vertical">
+                  <li>
+                    <a href="#">
+                      Virginia Woolf
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      Ernest Hemingway
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      William Shakespeare
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      Jane Austen
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      Leo Tolstoy
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-md-3">
+                <h5 class="title">Categories</h5>
+                <ul class="links-vertical">
+                  <li>
+                    <a href="#">
+                      Programming
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      Code Notes
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      How To
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      Motivation
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      Inspiration
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      Code Challange
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-md-3">
+                <h5 class="title">Tags</h5>
+                <ul class="links-horizontal">
+                  <li>
+                    <a style="padding:1px" href="#"><span style="background-color: #e91e63" class="badge badge-pill">Budget travelling</span></a>
+                  </li>
+                  <li>
+                    <a style="padding:1px" href="#"><span style="background-color: #f44336" class="badge badge-pill">Healthy eating</span></a>
+                  </li>
+                  <li>
+                    <a style="padding:1px" href="#"><span style="background-color: #ff9800" class="badge badge-pill">Web dev</span></a>
+                  </li>
+                  <li>
+                    <a style="padding:1px" href="#"><span style="background-color: #4caf50" class="badge badge-pill">Destinations</span></a>
+                  </li>
+                  <li>
+                    <a style="padding:1px" href="#"><span style="background-color: #00bcd4" class="badge badge-pill">Foodie</span></a>
+                  </li>
+                  <li>
+                    <a style="padding:1px" href="#"><span style="background-color: #00bcd4" class="badge badge-pill">Nature</span></a>
+                  </li>
+                  <li>
+                    <a style="padding:1px" href="#"><span style="background-color: #e91e63" class="badge badge-pill">Tips &amp; tricks</span></a>
+                  </li>
+                  <li>
+                    <a style="padding:1px" href="#"><span style="background-color: #6c757d" class="badge badge-pill">Start-up</span></a>
+                  </li>
+                  <li>
+                    <a style="padding:1px" href="#"><span style="background-color: #9c27b0" class="badge badge-pill">Recipes</span></a>
+                  </li>
+                  <li>
+                    <a style="padding:1px" href="#"><span style="background-color: #00bcd4" class="badge badge-pill">Trending</span></a>
+                  </li>
+                  <li>
+                    <a style="padding:1px" href="#"><span style="background-color: #f44336" class="badge badge-pill">Open source</span></a>
+                  </li>
+                  <li>
+                    <a style="padding:1px" href="#"><span style="background-color: #9c27b0" class="badge badge-pill">Admin dashboards</span></a>
+                  </li>
+                  <li>
+                    <a style="padding:1px" href="#"><span style="background-color: #6c757d" class="badge badge-pill">Street style</span></a>
+                  </li>
+                  <li>
+                    <a style="padding:1px" href="#"><span style="background-color: #4caf50" class="badge badge-pill">Haute couture</span></a>
+                  </li>
+                  <li>
+                    <a style="padding:1px" href="#"><span style="background-color: #4caf50" class="badge badge-pill">Nutrition</span></a>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-md-3">
+                <h5 class="title">Subscribe to Newsletter</h5>
+                <p class="text-muted">
+                  Join our newsletter and get news in your inbox every week! We hate spam too, so no worries about
+                  this.
+                </p>
+                <form action="" method="post">
+                  <div class="md-form form-sm my-1">
+                    <input type="email" id="subcriptionUserEmail" class="form-control form-control-sm">
+                    <label for="subcriptionUserEmail">Your Email</label>
+                  </div>
+                  <div class="text-center">
+                    <button class="btn btn-secondary btn-sm btn-round" type="submit">Subscribe</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <hr>
+          <nav>
+            <ul class="nav justify-content-center white lighten-4 py-0 font-weight-bold text-uppercase font-12 blogy-subnav">
+              <li class="nav-item">
+                <a class="nav-link active" href="#!">About us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#!">Blog</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#!">Community</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#!">Contact us</a>
+              </li>
+            </ul>
+          </nav>
+          <ul class="social-buttons">
+            <li>
+              <a href="#" class="btn btn-just-icon btn-link btn-twitter">
+                <i class="fab fa-twitter"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="btn btn-just-icon btn-link btn-facebook">
+                <i class="fab fa-facebook-square"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="btn btn-just-icon btn-link btn-dribbble">
+                <i class="fab fa-dribbble"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="btn btn-just-icon btn-link btn-google">
+                <i class="fab fa-google-plus"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="btn btn-just-icon btn-link btn-youtube">
+                <i class="fab fa-youtube"></i>
+              </a>
+            </li>
+          </ul>
+          <div class="text-center">
+            <div class="copyright pull-center">
+              Copyright ©
+              <script>
+                document.write(new Date().getFullYear()) 
+              </script> a <a href="#" class="purple-text">Creative Lyfe</a> &amp; <a href="#" class="purple-text">I Code In GH</a> innovation All Rights Reserved.
+            </div>
+          </div>
+        </div>
+      </footer>
+      <!-- /Main Blogy Footer -->
+    </main>
+  </body>
+</html>  

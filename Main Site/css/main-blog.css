@@ -1,0 +1,391 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto|Roboto+Slab&display=swap');
+
+/* ============== Utilities =============== */
+.mb-6 {
+  margin-bottom: 75px;
+}
+
+.shadow-bottom {
+  box-shadow: 0 4px 2px -2px gray;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.btn.btn-just-icon {
+  font-size: 24px;
+  height: 41px;
+  min-width: 41px;
+  width: 41px;
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+  line-height: 41px;
+}
+
+.btn.btn-icon{
+  height: 2.375rem;
+  min-width: 2.375rem;
+  width: 2.375rem;
+  padding: 0;
+  font-size: .9375rem;
+  overflow: hidden;
+  position: relative;
+  line-height: normal;
+}
+
+.rounded-circle, .btn-round {
+  border-radius: 50px;
+}
+
+.btn-just-icon.btn-round {
+  border-radius: 50%;
+  /* padding: 6px 10px; */
+}
+
+i.material-icons {
+  font-size: inherit;
+}
+
+.section {
+  padding: 70px 0;
+  background-size: cover;
+  background-position: center center;
+}
+
+.title {
+  color: #3C4858;
+  text-decoration: none;
+  font-weight: 500;
+  font-family: 'Roboto Slab', serif;
+}
+
+.font-12 {
+  font-size: 12px;
+}
+
+.font-18 {
+  font-size: 18px;
+}
+
+.font-greyish {
+  color: rgba(255, 255, 255, 0.76);
+}
+
+.px-custom-4 {
+  padding-left: 4%;
+  padding-right: 4%;
+}
+
+.img-raised {
+  box-shadow: 0 5px 15px -3px rgba(0, 0, 0, 0.4), 0 8px 10px -5px rgba(0, 0, 0, 0.5);
+}
+
+.card-plain {
+  background: transparent;
+  box-shadow: none;
+}
+
+.card-plain .card-header .card-header-img img {
+  width: 100%;
+  display: block;
+  border-radius: 0.75em;
+  max-height: 200px;
+}
+
+.card-plain .card-category {
+  margin-top: 0.8rem;
+}
+
+.card-plain .card-title {
+  margin-top: .5rem;
+  color: #4B515D;
+  font-weight: 500;
+  font-family: 'Roboto Slab', serif;
+}
+
+.card-plain .card-tags span {
+  background: #bdbdbd;
+  padding: 5px 10px;
+}
+
+.card-plain .card-description {
+  font-weight: 300;
+  font-size: 15px;
+  color: #9e9e9e;
+}
+
+.card-plain .author {
+  font-weight: 300;
+  font-size: 15px;
+}
+
+.card-profile {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.card-profile .card-footer {
+  padding: 0 10px;
+  background: transparent;
+  border: 0;
+}
+
+.card-profile .card-footer .btn.btn-just-icon {
+  font-size: 20px;
+  padding: 12px 12px;
+  line-height: 1em;
+}
+
+.card-profile .card-header .card-header-img img {
+  border-radius: 0.4rem;
+  max-height: 150px;
+}
+
+.post-author-img {
+  width: 30px !important;
+  height: 30px !important;
+  display: inline-block;
+}
+
+/* ============== Blogy Main Header Css STarT ============= */
+.blogy-main-header {
+  background-color: none;
+  background: url('https://source.unsplash.com/random/1200×400/?javascript,programming,technology,cathedral,forest,estate,iphone,macbook,rain');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+
+.blogy-main-header-overlay {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.edge-header {
+  height: 420px;
+  background-color: #ccc;
+}
+
+.free-bird {
+  margin-top: -55px;
+}
+
+.navbar-text-gray li a {
+  color: dimgray;
+  font-size: 15px;
+  font-weight: 300;
+}
+
+/* Navbar */
+@media (max-width: 991px) {
+  .navbar .navbar-translate {
+    width: 100%;
+    position: relative;
+    display: flex;
+    -ms-flex-pack: justify !important;
+    justify-content: space-between !important;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-transition: transform 0.5s cubic-bezier(0.685, 0.0473, 0.346, 1);
+    -moz-transition: transform 0.5s cubic-bezier(0.685, 0.0473, 0.346, 1);
+    -o-transition: transform 0.5s cubic-bezier(0.685, 0.0473, 0.346, 1);
+    -ms-transition: transform 0.5s cubic-bezier(0.685, 0.0473, 0.346, 1);
+    transition: transform 0.5s cubic-bezier(0.685, 0.0473, 0.346, 1);
+  }
+}
+
+.navbar-toggler-icon {
+  display: inline-block;
+  width: 1.5em;
+  height: 1.5em;
+  vertical-align: middle;
+  content: "";
+  background: no-repeat center center;
+  background-size: 100% 100%;
+}
+
+.navbar .navbar-toggler .navbar-toggler-icon {
+  background-color: #555;
+}
+
+.navbar.navbar-transparent .navbar-toggler .navbar-toggler-icon {
+  background-color: #fff;
+}
+
+.navbar .navbar-toggler .navbar-toggler-icon {
+  position: relative;
+  width: 22px;
+  height: 2px;
+  vertical-align: middle;
+  outline: 0;
+  display: block;
+  border-radius: 1px;
+}
+
+.navbar .navbar-toggler .navbar-toggler-icon+.navbar-toggler-icon {
+  margin-top: 4px;
+}
+
+.navbar-toggler {
+  padding: 0.25rem 0.75rem;
+  font-size: 1.25rem;
+  line-height: 1;
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+}
+
+.navbar .navbar-toggler {
+  cursor: pointer;
+}
+
+.navbar-toggler:hover, .navbar-toggler:focus {
+  text-decoration: none;
+}
+
+#pagesNav .nav-link {
+  padding: 15px !important;
+}
+
+.top-authors {
+  background: url('https://source.unsplash.com/random/1200×400/?mountain,everest,hill,forest,rain,snow');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  padding: 0;
+}
+
+.top-authors-overlay {
+  padding: 80px 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.big-footer {
+  padding: 1.875rem 0;
+}
+
+.big-footer .title {
+  color: #3C4858;
+  text-decoration: none;
+  font-size: 1.0625rem;
+  line-height: 1.55em;
+  margin-bottom: 15px;
+  margin-top: 10px;
+}
+
+.big-footer .content {
+  text-align: left;
+}
+
+footer ul {
+  margin-bottom: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.big-footer .links-vertical {
+  text-transform: uppercase;
+  font-family: 'Roboto', sans-serif;
+}
+
+footer ul.links-vertical li {
+  display: block;
+  margin-left: -5px;
+  margin-right: -5px;
+}
+
+footer ul.links-vertical li a {
+  padding: 5px;
+  color: #4B515D;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.4rem;
+  display: block;
+}
+
+footer ul.links-horizontal li {
+  display: inline-block;
+}
+
+footer ul.links-horizontal li a {
+  padding: 1px;
+}
+
+footer ul.links-horizontal li a span {
+  padding: 5px 12px;
+  text-transform: uppercase;
+  font-size: 10px;
+  color: #fff;
+}
+
+footer nav .blogy-subnav a {
+  color: #3C4858;
+}
+
+footer .social-buttons {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+footer ul.social-buttons li {
+  display: inline-block;
+}
+
+footer .social-buttons .btn {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.btn.btn-twitter.btn-link {
+  background-color: transparent;
+  color: #55acee;
+  box-shadow: none;
+}
+
+.btn.btn-facebook.btn-link {
+  background-color: transparent;
+  color: #3b5998;
+  box-shadow: none;
+}
+
+.btn.btn-dribbble.btn-link {
+  background-color: transparent;
+  color: #ea4c89;
+  box-shadow: none;
+}
+
+.btn.btn-google.btn-link {
+  background-color: transparent;
+  color: #dd4b39;
+  box-shadow: none;
+}
+
+.btn.btn-youtube.btn-link {
+  background-color: transparent;
+  color: #e52d27;
+  box-shadow: none;
+}
+
+footer .pull-center {
+  display: inline-block;
+  float: none;
+}
+
+footer .copyright {
+  padding: 15px 0;
+}
+/* ============== Blogy Main Header Css STarT ============= */
+

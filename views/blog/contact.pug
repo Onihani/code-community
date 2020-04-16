@@ -1,0 +1,85 @@
+extends ../layouts/main-layout.pug
+
+block headerContent 
+  .navigation-section.lead
+    span.page-nav-link
+      a.link-custom.seventh.after(href='#') Home
+    i.fas.fa-long-arrow-alt-right
+    span.page-nav-link
+      a.link-custom.eigth.after(href='#') Contact
+
+block mainContent
+  main#contact-area
+    // ============ start 3 column info area ===========
+    section#contact-info-area
+      .contaner
+        h1.text-center.mb-4.font-questrial Get In Touch With Us
+        .row
+          .col-md-4
+            .phone-info.text-center
+              h1
+                i.fas.fa-mobile-alt
+              h2 Phone
+              p.contact-info-detail
+                strong Phone 1: 
+                a.link-custom(href='tel:00233578061900') +233578061900
+              p.contact-info-detail
+                strong Phone 2: 
+                a.link-custom(href='tel:00233200561066') +233200561066
+          .col-md-4
+            .location-info.text-center
+              h1
+                i.fas.fa-map-marker-alt
+              h2 Address
+              p.contact-info-detail
+                | Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                | Adipisci consequatur quae tempore porro iure quaerat.
+          .col-md-4
+            .mail-info.text-center
+              h1
+                i.fas.fa-envelope
+              h2 Email
+              p.contact-info-detail
+                a.link-custom(href='mailto:creativelyfofficial@gmail.com') creativelyfofficial@gmail.com
+              p.contact-info-detail
+                a.link-custom(href='mailto:n.bongo40@gmail.com') n.bongo40@gmail.com
+    // ============ end 3 column info area =============
+    // ============ start contact from area =============
+    section#contact-form-area
+      .container
+        p.lead.font-raleway.text-light.text-center.mb-2 Have A Question ?
+        p.lead.font-raleway.text-light.text-center.mb-5 Please Tell Us, We Will Reply As Soon As We Recieve It
+        .reach-us-form
+          form(action='' method='post')
+            .form-group.mb-4
+              input#name.form-control.form-control-lg.dark-form-style(type='text' name='name' placeholder='Your Name')
+            .form-group.mb-4
+              input#email.form-control.form-control-lg.dark-form-style(type='email' name='email' placeholder='Your Email')
+            .form-group.mb-4
+              input#subject.form-control.form-control-lg.dark-form-style(type='text' name='subject' placeholder='Subject')
+            .form-group
+              textarea#message.form-control.form-control-lg.dark-form-style(name='message' cols='30' rows='6' placeholder='Message')
+            button.btn.reach-us-btn(type='submit') Send Message
+    // ============ end contact from area =============
+    // ============ connect with use area start ==========
+    section#connect-with-us
+      .container
+        h3.text-center.font-montserrat Connect With Us!
+        .social-handles-wrapper.px-3.py-2
+          .handle-icon
+            a(href='#')
+              i.fab.fa-facebook-f
+          .handle-icon
+            a(href='#')
+              i.fab.fa-instagram
+          .handle-icon
+            a(href='#')
+              i.fab.fa-linkedin-in
+          .handle-icon
+            a(href='#')
+              i.fab.fa-whatsapp
+          .handle-icon
+            a(href='#')
+              i.fab.fa-youtube
+    // ============ connect with use area end ==========
+  

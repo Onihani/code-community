@@ -1,0 +1,55 @@
+extends ../layouts/main-layout.pug
+
+block customCss
+  link(rel='stylesheet' href='/css/main-blog.css')
+  link(rel='stylesheet' href='/css/blog-posts.css')
+  
+block customJs
+  //- script(type='text/javascript' src='/js/main-blog.js' defer='')
+
+block navbar
+  // Navbar
+  nav#mainNavbar.navbar.navbar-color-on-scroll.navbar-expand-lg.navbar-light.px-5.py-3.mb-3
+    .container
+      .navbar-translate
+        a.navbar-brand.text-reste(href='/')
+          | Blogy
+        button.navbar-toggler.navbar-toggler-main(type='button' data-toggle='collapse' aria-expanded='false' aria-label='Toggle navigation' data-target='#sectionsNav')
+          span.sr-only Toggle navigation
+          span.navbar-toggler-icon
+          span.navbar-toggler-icon
+          span.navbar-toggler-icon
+      #sectionsNav.collapse.navbar-collapse
+        ul.navbar-nav.ml-auto
+          li.button-container.dropdown.nav-item.mr-lg-2
+            a.btn.btn-info.btn-round.btn-block.dropdown-toggle(href='' target='_blank' data-toggle='dropdown')
+              | Login as
+            .dropdown-menu.dropdown-with-icons
+              a.dropdown-item.mx-2(href='/author')
+                strong Author
+                | &nbsp;to manage articles
+              a.dropdown-item.mx-2(href='/comment')
+                strong Member
+                | &nbsp;to comment
+          li.button-container.nav-item
+            a.btn.btn-pink.btn-round.btn-block(href='#' target='_blank')
+              i.material-icons forum
+              |  Community
+  // /.Navbar
+
+block mainContent
+  .section
+    .container
+      .row
+        .col-md-11.mx-auto
+          div.text-center
+            h2.display-5 
+              img(src="/image-resources/emojis/face-with-pleading-eyes.png" class="img-fuild")
+              | Oops, Page not found
+            p.lead We're sorry, couldn't find the resource you requested !!!
+            p.mt-5.font-weight-normal
+              a.btn-link.btn-sm.text-muted(href="/") Go to Home Page 
+              | &bull; 
+              a.btn-link.btn-sm.text-muted(href="/posts") Go to All Articles 
+              | &bull; 
+              a.btn-link.btn-sm.text-muted(href="/contact") Contact us

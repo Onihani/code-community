@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <!-- ========== CSS ========= -->
+    <!-- Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="asserts/mdb4/css/bootstrap.min.css" />
+    <!-- Material Design Bootstrap -->
+    <link rel="stylesheet" href="asserts/mdb4/css/mdb.min.css" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="asserts/fontawesome/css/all.css" />
+    <!-- Animate Css -->
+    <link rel="stylesheet" href="asserts/animatecss/animate.css" />
+    <!-- Material Icons -->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <!-- Custom -->
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/forms.css" />
+    <link rel="stylesheet" href="./css/dev.css" />
+    <link rel="stylesheet" href="./css/sidebar-theme.css" />
+
+    <!-- ========== JS ========== -->
+    <!-- Font Awesome -->
+    <!-- <script src="https://kit.fontawesome.com/88cfe1b266.js" defer></script> -->
+    <!-- jQuery -->
+    <script
+      type="text/javascript"
+      src="asserts/mdb4/js/jquery.min.js"
+      defer
+    ></script>
+    <!-- Bootstrap tooltips -->
+    <script
+      type="text/javascript"
+      src="asserts/mdb4/js/popper.min.js"
+      defer
+    ></script>
+    <!-- Bootstrap core JavaScript -->
+    <script
+      type="text/javascript"
+      src="asserts/mdb4/js/bootstrap.min.js"
+      defer
+    ></script>
+    <!-- MDB core JavaScript -->
+    <script
+      type="text/javascript"
+      src="asserts/mdb4/js/mdb.min.js"
+      defer
+    ></script>
+    <!-- masonry -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js"
+      defer
+    ></script>
+    <!-- Custom -->
+    <script type="text/javascript" src="./js/main.js" defer></script>
+    <script src="./js/dev.js" defer></script>
+    <style>
+      .alert {
+        font-size: 14px;
+        font-weight: 400;
+      }
+
+      .alert strong {
+        font-weight: bolder;
+      }
+
+      .alert[data-notify-position="top-right"] {
+        display: inline-block;
+        position: fixed;
+        z-index: 1099;
+        top: 20px;
+        right: 20px;
+      }
+
+      .media {
+        padding: 3% 8%;
+        background: #fbfcfd;
+        border-bottom: 1px solid #cbd5e0;
+        -moz-box-shadow: inset 0 0 2px #778899;
+        -webkit-box-shadow: inset 0 0 2px #778899;
+        box-shadow: inset 0 0 2px #778899;
+      }
+
+      .media:first-of-type {
+        border-top: 1px solid #cbd5e0;
+      }
+
+      .media.unread {
+        background: #f0f3f5;
+        -moz-box-shadow: inset 0 0 1px #778899;
+        -webkit-box-shadow: inset 0 0 1px #778899;
+        box-shadow: inset 0 0 1px #778899;
+      }
+
+      .media img {
+        width: 50px;
+        height: 50px;
+      }
+
+      .media-body {
+        color: #778899;
+        font-size: 14px;
+        font-weight: 400;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="col-11 col-md-4 alert alert-warning alert-dismissible fade show animated slideInDown" role="alert" data-notify-position="top-right">
+      <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </body>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body p-0">
+            <ul class="list-unstyled m-0">
+              <li class="media unread">
+                <img class="d-flex mr-3 rounded-circle shadow-sm" src="https://mdbootstrap.com/img/Photos/Others/placeholder7.jpg" alt="Generic placeholder image">
+                <div class="media-body">
+                  <!-- <h6 class="mt-0 mb-1">Congrats you reached 2000 views</h6> -->
+                  Cras sit amet <b>nibh libero</b>, in gravida nulla. Nulla vel metus scelerisque
+                  <small class="d-block mt-1 px-3"> <i class="fal fa-hourglass-start mr-2"></i> Just now</small>
+              </li>
+              <li class="media unread">
+                <img class="d-flex mr-3 rounded-circle shadow-sm" src="https://mdbootstrap.com/img/Photos/Others/placeholder6.jpg" alt="Generic placeholder image">
+                <div class="media-body">
+                  <!-- <h6 class="mt-0 mb-1">Hurray you reached 500 post likes</h6> -->
+                  Lorem ipsum <b>dolor</b> sit amet, consectetur <b>adipisicing</b> elit. Animi, placeat.
+                  <small class="d-block mt-1 px-3"> <i class="fal fa-history mr-2"></i> yesterday</small>
+                </div>
+              </li>
+              <li class="media">
+                <img class="d-flex mr-3 rounded-circle shadow-sm" src="https://mdbootstrap.com/img/Photos/Others/placeholder5.jpg" alt="Generic placeholder image">
+                <div class="media-body">
+                  <!-- <h6 class="mt-0 mb-1">List-based media object</h6> -->
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta sunt molestiae placeat!
+                  <small class="d-block mt-1 px-3"> <i class="fal fa-history mr-2"></i> 1 day ago</small>
+                </div>
+              </li>
+              <li class="media">
+                <!-- <img class="d-flex mr-3 rounded-circle shadow-sm" src="https://mdbootstrap.com/img/Photos/Others/placeholder5.jpg" alt="Generic placeholder image"> -->
+                <div class="media-body">
+                  <!-- <h6 class="mt-0 mb-1">List-based media object</h6> -->
+                  All suspected cases of <b>corona virus</b> in China are being treated at <b>Wuhan</b>!
+                  <small class="d-block mt-1 px-3"> <i class="fal fa-history mr-2"></i> 3 days ago</small>
+                </div>
+              </li>
+              <li class="media unread">
+                <!-- <img class="d-flex mr-3 rounded-circle shadow-sm" src="https://mdbootstrap.com/img/Photos/Others/placeholder5.jpg" alt="Generic placeholder image"> -->
+                <div class="media-body">
+                  <!-- <h6 class="mt-0 mb-1">List-based media object</h6> -->
+                  Staying at home is one effective way to reduce the spread of the virus
+                  <small class="d-block mt-1 px-3"> <i class="fal fa-history mr-2"></i>  days ago</small>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6"></div>
+    </div>
+  </div>
+</html>

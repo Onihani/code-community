@@ -1,0 +1,155 @@
+extends ../layouts/main-layout.pug
+  
+block customCss
+  link(rel='stylesheet' href='/css/main-blog.css')
+  link(rel='stylesheet' href='/css/blog-posts.css')
+  link(rel='stylesheet' href='/css/blog-single-post.css')
+
+block assertJs
+  // Masonry
+  script(type='text/javascript' src='/asserts/mdb4/js/addons/masonry.pkgd.min.js' defer='')
+  script(type='text/javascript' src='/asserts/mdb4/js/addons/imagesloaded.pkgd.min.js' defer='')
+  // Discord Comment Count
+  script#dsq-count-scr(src='https://blogy-4.disqus.com/count.js' defer='' async='')
+  
+block customJs
+  script(src='/js/blog-single-post.js' defer='')
+
+block navbar
+  // Navbar
+  nav#mainNavbar.navbar.navbar-color-on-scroll.navbar-expand-lg.navbar-light.px-5.py-3.mb-3
+    .container
+      .navbar-translate
+        a.navbar-brand.text-reste(href='/')
+          | Blogy
+        button.navbar-toggler.navbar-toggler-main(type='button' data-toggle='collapse' aria-expanded='false' aria-label='Toggle navigation' data-target='#sectionsNav')
+          span.sr-only Toggle navigation
+          span.navbar-toggler-icon
+          span.navbar-toggler-icon
+          span.navbar-toggler-icon
+      #sectionsNav.collapse.navbar-collapse
+        ul.navbar-nav.ml-auto
+          li.button-container.dropdown.nav-item.mr-lg-2
+            a.btn.btn-info.btn-round.btn-block.dropdown-toggle(href='' target='_blank' data-toggle='dropdown')
+              | Login as
+            .dropdown-menu.dropdown-with-icons
+              a.dropdown-item.mx-2(href='/author')
+                strong Author
+                | &nbsp;to manage articles
+              a.dropdown-item.mx-2(href='/comment')
+                strong Member
+                | &nbsp;to comment
+          li.button-container.nav-item
+            a.btn.btn-pink.btn-round.btn-block(href='/community' target='_blank')
+              i.material-icons forum
+              |  Community
+  // /.Navbar
+
+block mainContent
+  .section
+    .container
+      .row
+        .col-md-8.mx-auto
+          // Single Post Section
+          .border.p-1.rounded.shadow.mb-4
+            .single-post-image.rounded(style=("background: url('/" + post.imageUrl + "');"))
+          h2.title #{post.title}
+          .card.card-plain.mt-5
+            != post.content
+  .section.single-post-info
+    .row
+      .col-md-8.mx-auto
+        .row.text-center
+          .col-xl-6.text-xl-left
+            .post-meta-data
+              span.d-none.d-sm-inline Published on 
+              | #{prettifyDate(post.postTime.dataAdded)} &bull; #{post.readtime} min read
+            .single-post-tags
+              | Tags: 
+              each tag in post.tags
+                a(href=('/posts?withtag=' + tag))
+                  span.badge.badge-pill(style='background-color: #f44336;') #{tag}
+                | &nbsp;
+            .single-post-category
+              | Category: 
+              a.text-capitalize(href=('/posts?category=' + post.category)) #{post.category}
+          .col-xl-6.my-2
+            h6
+              i.fal.fa-share-all.mr-2
+              |  Share
+            .d-flex.w-100.justify-content-center.align-items-center.text-white
+              a.bg-danger.text-reset.mr-2.border.btn.btn-just-icon.rounded-circle(href='#pablo')
+                i.fab.fa-instagram
+              a.bg-info.text-reset.mx-2.border.btn.btn-just-icon.rounded-circle(href='#pablo')
+                i.fab.fa-twitter
+              a.bg-primary.text-reset.mx-2.border.btn.btn-just-icon.rounded-circle(href='#pablo')
+                i.fab.fa-facebook-f
+              a.bg-success.text-reset.ml-2.border.btn.btn-just-icon.rounded-circle(href='#pablo')
+                i.fab.fa-whatsapp
+        hr
+        .card.card-profile.plain-card.shadow-none
+          .row.text-center
+            .col-lg-2
+              .card-avatar
+                a(href=('/posts/author/' + post.author._id))
+                  img.shadow.img-fluid.rounded-circle.single-post-author-avatar(src=post.author.profileImages.avatarImg alt='author avatar')
+            .col-lg-7.text-lg-left.py-2
+              h4.card-title
+                a.indigo-text(href=('/posts/author/' + post.author._id)) #{post.author.name}
+              p.card-description.lead.text-muted
+                | #{post.author.about}
+            .col-lg-3.text-lg-left.py-2
+              h4.card-title.blue-grey-text Follow
+              .card-footer.px-lg-0
+                a.btn.btn-just-icon.btn-link.btn-blue.text-white(href=post.author.socialHandles.handles.facebook target='_blank' rel='nofollow')
+                  i.fab.fa-facebook-square
+                a.btn.btn-just-icon.btn-link.btn-info.text-white(href=post.author.socialHandles.handles.twitter target='_blank' rel='nofollow')
+                  i.fab.fa-twitter
+                a.btn.btn-just-icon.btn-link.btn-pink.text-white(href=post.author.socialHandles.handles.instagram target='_blank' rel='nofollow')
+                  i.fab.fa-instagram
+  .section.single-post-comments
+    .container
+      .row
+        .col-md-10.mx-auto
+          h3#comments.title.text-center Comments
+          // Disqus HERE
+          #disqus_thread
+          noscript
+            | Please enable JavaScript to view Comments
+            a(href='https://disqus.com/?ref_noscript') comments powered by Disqus.
+  .section.related-articles
+          .container
+            .row
+              .col-md-11.mx-auto
+                h2.title Related
+                .owl-carousel.mt-5
+                  each relatedPost in relatedPosts
+                    .py-2.px-custom-4.border.rounded.shadow
+                      .card.card-plain
+                        .card-header.bg-white.p-0.border-0
+                          a.card-header-img(href=('/posts/singlepost/' + relatedPost._id))
+                            img.img-raised.effect5.img-fuild(src=('/' +relatedPost.imageUrl) alt='Article Image')
+                        .card-body
+                          h6.card-category.mt-0
+                            a.grey-text.text-uppercase(href=('/posts?category=' + relatedPost.category))
+                              small #{relatedPost.category}
+                          h4.card-title.font-18
+                            a.text-reset(href=('/posts/singlepost/' + relatedPost._id)) #{relatedPost.title}
+                          p.card-tags
+                            each tag in relatedPost.tags
+                              a(href=('/posts?withtag=' + tag))
+                                span.badge.badge-pill #{tag}
+                              | &nbsp;
+                          p.card-description
+                            | #{relatedPost.summary} 
+                            a.purple-text(href=('/posts/singlepost/' + relatedPost._id)) Read More
+                          .clearfix
+                            .author.float-left.d-flex.justify-content-center.align-items-center
+                              a(href=('/posts/author/' + relatedPost.author._id))
+                                img.rounded-circle.post-author-img.border.mr-2(src=(relatedPost.author.profileImages.avatarImg) alt='author avatar')
+                              a.text-default(href=('/posts/author/' + relatedPost.author._id))
+                                b #{relatedPost.author.name}
+                            .read-time.float-right.text-muted
+                              i.fal.fa-watch.mr-1
+                              | #{relatedPost.readtime} mins read
+                  

@@ -1,0 +1,235 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  meta(http-equiv='X-UA-Compatible' content='ie=edge')
+  link(rel="shortcut icon" type="image/svg" href="/image-resources/logos/blogy-logo-3-color.svg")
+
+  title Blogy | Community
+  // ========== CSS =========
+  // Fonts
+  link(href='https://fonts.googleapis.com/css?family=Montserrat:400,700,200' rel='stylesheet')
+  // Bootstrap core CSS
+  link(rel='stylesheet' href='asserts/mdb4/css/bootstrap.min.css')
+  // Material Design Bootstrap
+  link(rel='stylesheet' href='asserts/mdb4/css/mdb.min.css')
+  // Font Awesome
+  link(rel='stylesheet' href='asserts/fontawesome/css/all.css')
+  // Animate Css
+  link(rel='stylesheet' href='asserts/animatecss/animate.css')
+  // Material Icons
+  link(href='https://fonts.googleapis.com/icon?family=Material+Icons' rel='stylesheet')
+  // Custom
+  link(rel='stylesheet' href='./css/main-blog.css')
+  link(rel='stylesheet' href='./css/community.css')
+  // ========== JS ==========
+  script(type='text/javascript' src='asserts/mdb4/js/jquery.min.js' defer='')
+  // Bootstrap tooltips
+  script(type='text/javascript' src='asserts/mdb4/js/popper.min.js' defer='')
+  // Bootstrap core JavaScript
+  script(type='text/javascript' src='asserts/mdb4/js/bootstrap.min.js' defer='')
+  // MDB core JavaScript
+  script(type='text/javascript' src='asserts/mdb4/js/mdb.min.js' defer='')
+  // Masonry
+  script(type='text/javascript' src='/asserts/mdb4/js/addons/masonry.pkgd.min.js' defer='')
+  script(type='text/javascript' src='/asserts/mdb4/js/addons/imagesloaded.pkgd.min.js' defer='')
+  // Custom
+  script(type='text/javascript' src='/js/community.js' defer)
+
+body
+  //- facebook widget SDK 
+  #fb-root
+    script(async='' defer='' crossorigin='anonymous' src='https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v6.0&appId=447732419284972&autoLogAppEvents=1')
+
+  //- main header
+  header
+    .empty-space.z-depth-2
+      .overlay.rgba-black-dark
+    .brand-logo.text-center
+       .container
+          img(src="/image-resources/logos/blogy-logo-3-color.svg", alt="logo" width="170" class="image-fluid rounded-circle shadow-lg")
+          .text-center.mt-3
+            h2.title Join Our Community
+            p.lead
+              | Lets get social. Join any of our social communities and lets learn from each other
+            .card.card-1.mx-auto(style="width: fit-content; min-width: 300px;")
+              .card-body.px-2.pt-3.pb-2
+                .fb-page(data-href='https://www.facebook.com/icodeinghana/' data-tabs='' data-width='' data-height='' data-small-header='false' data-adapt-container-width='true' data-hide-cover='false' data-show-facepile='false')
+                  blockquote.fb-xfbml-parse-ignore(cite='https://www.facebook.com/icodeinghana/')
+                    a(href='https://www.facebook.com/icodeinghana/') Code In Ghana
+    
+  //- main body 
+  main
+    .container-fluid
+      .row
+        .col-md-10.col-lg-11.mx-auto.mt-4
+          .container
+            .section
+              .grid.social-communities
+                .grid-sizer
+                .grid-item.mb-4
+                  .card.card-1.px-2.pt-3.pb-2
+                    .community-join-grid
+                      .card-header.bg-white.h-100.p-0.border-0
+                        img(src="/image-resources/community/discord.png" alt="discord logo" class="img-fluid rounded-circle" width="70")
+                      .card-body.p-0.pl-2.py-2
+                        h4.lead.text-muted.card-title.mb-1 Discord
+                        small 4000 members
+                      .card-footer.bg-white.border-0.p-0
+                        a(href="https://discord.gg/Fmdd47" class="btn btn-info btn-sm text-nowrap") 
+                          i.fas.fa-paper-plane.mr-2
+                          | Join
+                .grid-item.mb-4
+                  .card.card-1.px-2.pt-3.pb-2
+                    .community-join-grid
+                      .card-header.bg-white.h-100.p-0.border-0
+                        img(src="/image-resources/community/whatsapp.png" alt="discord logo" class="img-fluid rounded-circle" width="70")
+                      .card-body.p-0.pl-2.py-2
+                        h4.lead.text-muted.card-title.mb-1 Whatsapp
+                        small 200+ members
+                      .card-footer.bg-white.border-0.p-0
+                        a(href="https://discord.gg/Fmdd47" class="btn btn-info btn-sm text-nowrap") 
+                          i.fas.fa-paper-plane.mr-2
+                          | Join
+                .grid-item.mb-4
+                  .card.card-1.px-2.pt-3.pb-2
+                    .community-join-grid
+                      .card-header.bg-white.h-100.p-0.border-0
+                        img(src="/image-resources/community/instagram.png" alt="discord logo" class="img-fluid rounded-circle" width="70")
+                      .card-body.p-0.pl-2.py-2
+                        h4.lead.text-muted.card-title.mb-1 Instagram
+                        small 2000+ followers
+                      .card-footer.bg-white.border-0.p-0
+                        a(href="https://discord.gg/Fmdd47" class="btn btn-info btn-sm text-nowrap") 
+                          i.fas.fa-paper-plane.mr-2
+                          | Join
+                .grid-item.mb-4
+                  .card.card-1.px-2.pt-3.pb-2
+                    .community-join-grid
+                      .card-header.bg-white.h-100.p-0.border-0
+                        img(src="/image-resources/community/telegram.png" alt="discord logo" class="img-fluid rounded-circle" width="70")
+                      .card-body.p-0.pl-2.py-2
+                        h4.lead.text-muted.card-title.mb-1 Telegram
+                        small 3000+ members
+                      .card-footer.bg-white.border-0.p-0
+                        a(href="https://discord.gg/Fmdd47" class="btn btn-info btn-sm text-nowrap") 
+                          i.fas.fa-paper-plane.mr-2
+                          | Join
+                .grid-item.mb-4
+                  .card.card-1.px-2.pt-3.pb-2
+                    .community-join-grid
+                      .card-header.bg-white.h-100.p-0.border-0
+                        img(src="/image-resources/community/twitter.png" alt="discord logo" class="img-fluid rounded-circle" width="70")
+                      .card-body.p-0.pl-2.py-2
+                        h4.lead.text-muted.card-title.mb-1 Twitter
+                        small 3000+ followers
+                      .card-footer.bg-white.border-0.p-0
+                        a(href="https://discord.gg/Fmdd47" class="btn btn-info btn-sm text-nowrap") 
+                          i.fas.fa-paper-plane.mr-2
+                          | Join
+                .grid-item.mb-4
+                  .card.card-1.px-2.pt-3.pb-2
+                    .community-join-grid
+                      .card-header.bg-white.h-100.p-0.border-0
+                        img(src="/image-resources/community/slack.png" alt="discord logo" class="img-fluid rounded-circle" width="70")
+                      .card-body.p-0.pl-2.py-2
+                        h4.lead.text-muted.card-title.mb-1 Slack
+                        small 4000+ members
+                      .card-footer.bg-white.border-0.p-0
+                        a(href="https://discord.gg/Fmdd47" class="btn btn-info btn-sm text-nowrap") 
+                          i.fas.fa-paper-plane.mr-2
+                          | Join
+
+  // Main Blogy Footer
+  footer.footer.big-footer.footer-white
+    .container
+      .content
+        .row
+          .col-md-3
+            h5.title Authors
+            ul.links-vertical
+              each author in topAuthors
+                li
+                  a(href=('/posts/author/' + author._id))
+                    | #{author.name}
+          .col-md-3
+            h5.title Categories
+            ul.links-vertical
+              li
+                a(href='/posts?category=programming')
+                  | Programming
+              li
+                a(href=href='/posts?category=code note')
+                  | Code Notes
+              li
+                a(href='/posts?category=how to')
+                  | How To
+              li
+                a(href='/posts?category=motivation')
+                  | Motivation
+              li
+                a(href='/posts?category=inspiration')
+                  | Inspiration
+              li
+                a(href='/posts?category=code challenge')
+                  | Code Challange
+          .col-md-3
+            h5.title Tags
+            ul.links-horizontal
+              each tag in blogTags
+                li
+                  a(style='padding:1px' href=('/posts?withtag=' + tag))
+                    span.badge.badge-pill(style=('background-color: ' + getRandomColor() + ';')) #{tag}
+          .col-md-3
+            h5.title Subscribe to Newsletter
+            p.text-muted
+              | Join our newsletter and get news in your inbox every week! We hate spam too, so no worries about
+              | this.
+            form(action='' method='post')
+              .md-form.form-sm.my-1
+                input#subcriptionUserEmail.form-control.form-control-sm(type='email')
+                label(for='subcriptionUserEmail') Your Email
+              .text-center
+                button.btn.btn-secondary.btn-sm.btn-round(type='submit') Subscribe
+      hr
+      nav
+        ul.nav.justify-content-center.white.lighten-4.py-0.font-weight-bold.text-uppercase.font-12.blogy-subnav
+          li.nav-item
+            a.nav-link.active(href='#!') About us
+          li.nav-item
+            a.nav-link(href='/posts') Articles
+          li.nav-item
+            a.nav-link(href='/community') Community
+          li.nav-item
+            a.nav-link(href='#!') Contact us
+      ul.social-buttons
+        li
+          a.btn.btn-just-icon.btn-link.btn-twitter(href='#')
+            i.fab.fa-twitter
+        li
+          a.btn.btn-just-icon.btn-link.btn-facebook(href='#')
+            i.fab.fa-facebook-square
+        li
+          a.btn.btn-just-icon.btn-link.btn-dribbble(href='#')
+            i.fab.fa-dribbble
+        li
+          a.btn.btn-just-icon.btn-link.btn-google(href='#')
+            i.fab.fa-google-plus
+        li
+          a.btn.btn-just-icon.btn-link.btn-youtube(href='#')
+            i.fab.fa-youtube
+      .text-center
+        .copyright.pull-center
+          | Copyright &copy;
+          script.
+            document.write(new Date().getFullYear())
+          |  a 
+          a.purple-text(href='#') Creative Lyfe
+          |  &amp; 
+          a.purple-text(href='#') I Code In GH
+          |  innovation All Rights Reserved.
+  // /Main Blogy Footer
+
+
+  script.
+    CSS.paintWorklet.addModule('./js/worklet/worklet.js')

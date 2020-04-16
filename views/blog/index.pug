@@ -1,0 +1,165 @@
+extends ../layouts/main-layout.pug
+
+block customCss
+  link(rel='stylesheet' href='/css/main-blog.css')
+  
+block customJs
+  script(type='text/javascript' src='/js/main-blog.js' defer='')
+
+block navbar
+  // Navbar
+  nav#mainNavbar.navbar.navbar-color-on-scroll.fixed-top.navbar-expand-lg.navbar-transparent.shadow-none.px-5.py-3.mb-3
+    .container
+      .navbar-translate
+        a.navbar-brand.text-white(href='/')
+          | Blogy
+        button.navbar-toggler.navbar-toggler-main(type='button' data-toggle='collapse' aria-expanded='false' aria-label='Toggle navigation' data-target='#sectionsNav')
+          span.sr-only Toggle navigation
+          span.navbar-toggler-icon
+          span.navbar-toggler-icon
+          span.navbar-toggler-icon
+      #sectionsNav.collapse.navbar-collapse
+        ul.navbar-nav.ml-auto
+          li.button-container.dropdown.nav-item.mr-lg-2
+            a.btn.btn-info.btn-round.btn-block.dropdown-toggle(href='' data-toggle='dropdown')
+              | Login as
+            .dropdown-menu.dropdown-with-icons
+              a.dropdown-item.mx-2(href='/author')
+                strong Author
+                | &nbsp;to manage articles
+              a.dropdown-item.mx-2(href='/comment')
+                strong Member
+                | &nbsp;to comment
+          li.button-container.nav-item
+            a.btn.btn-pink.btn-round.btn-block(href='/community')
+              i.material-icons forum
+              |  Community
+  // /.Navbar
+  
+block header
+  // Main Blogy Header
+  header.edge-header.deep-purple.blogy-main-header
+    .blogy-main-header-overlay
+      // Blody Intro Description
+      .container
+        .row
+          .col-md-8.ml-auto.mr-auto.text-center
+            h1.title.text-white
+              | A Place for Developers to Share and 
+              br.d-none.d-xl-block
+              |  Discover New Knowledge
+      // /Blody Intro Description
+
+block mainContent
+  .section
+    .container
+      .row
+        .col-md-10.mx-auto
+          // Featured Posts Section
+          h2.title Featured Articles
+          .card.card-plain.mt-5
+            - var featuredPosts = posts.filter(post => post.featured).slice(0, 3)
+
+            each featuredPost in featuredPosts
+
+              .row.mt-5
+                .col-md-4
+                  .card-header.bg-white.p-0.border-0
+                    a.card-header-img(href=('/posts/singlepost/' + featuredPost._id))
+                      img.img-raised.effect5.img-fuild(src=('/' + featuredPost.imageUrl) alt="Article Image")
+                .col-md-8
+                  h6.card-category
+                    a.text-dark.text-capitalize(href=('/posts?category=' + featuredPost.category)) #{featuredPost.category}
+                  h3.card-title
+                    a.text-reset(href=('/posts/singlepost/' + featuredPost._id)) #{featuredPost.title}
+                  p.card-tags
+                    each featuredPostTag in featuredPost.tags
+                      a(href=('/posts?withtag=' + featuredPostTag))
+                        span.badge.badge-pill #{featuredPostTag} 
+                      | &nbsp;
+                  p.card-description
+                    | #{featuredPost.summary} 
+                    a.purple-text(href=('/posts/singlepost/' + featuredPost._id)) Read More
+                  p.author
+                    | by 
+                    a.text-muted.font-weight-bold(href=('/posts/author/' + featuredPost.author._id))
+                      b #{featuredPost.author.name} 
+                    | &bull; #{prettifyDate(featuredPost.postTime.dataAdded)} &bull; #{featuredPost.readtime} mins read
+          // /Featured Posts Section
+  // Latest Posts Section
+  .section
+    .container
+      h2.title Latest articles
+      .owl-carousel.mt-5
+        - var featuredPostIds = featuredPosts.map(post => post._id)
+        - var latestPosts = posts.filter(post => !featuredPostIds.includes(post._id)).slice(0, 5)
+
+        each latestPost in latestPosts
+          .py-2.px-custom-4
+            .card.card-plain
+              .card-header.bg-white.p-0.border-0
+                a.card-header-img(href=('/posts/singlepost/' + latestPost._id))
+                  img.img-raised.effect5.img-fuild(src=latestPost.imageUrl alt='Article Image')
+              .card-body
+                h6.card-category.mt-0
+                  a.grey-text.text-uppercase(href=('/posts?category=' + latestPost.category))
+                    small #{latestPost.category}
+                h4.card-title.font-18
+                  a.text-reset(href=('/posts/singlepost/' + latestPost._id)) #{latestPost.title}
+                p.card-tags
+                  each tag in latestPost.tags
+                    a(href=('/posts?withtag=' + tag))
+                      span.badge.badge-pill #{tag}
+                    | &nbsp;
+                p.card-description
+                  | #{latestPost.summary} 
+                  a.purple-text(href=('/posts/singlepost/' + latestPost._id)) Read More
+                .clearfix
+                  .author.float-left.d-flex.justify-content-center.align-items-center
+                    a(href=('/posts/author/' + latestPost.author._id))
+                      img.rounded-circle.post-author-img.border.mr-2(src=latestPost.author.profileImages.avatarImg alt='author avatar')
+                    a.text-default(href=('/posts/author/' + latestPost.author._id))
+                      b #{latestPost.author.name}
+                  .read-time.float-right.text-muted
+                    i.fal.fa-watch &nbsp;
+                    | #{latestPost.readtime} mins read
+        
+      .text-center
+        a.btn.btn-pink.btn-sm.btn-raised.btn-round(href='#')
+          | View All
+  // /Latest Posts Section
+  // TOP Authors Section
+  .section.top-authors
+    .top-authors-overlay
+      .container
+        .row
+          .col-md-8.ml-auto.mr-auto.text-center
+            h2.title.mt-4.mb-3.text-white Our Top Authors
+            h5.description.mt-2.font-greyish.mb-6
+              | This is the paragraph where you can write more details about your team. Keep you
+              | user engaged by providing meaningful information.
+        .row
+          .col-md-6
+            .card.card-plain.card-profile
+              .row
+                - var popularAuthors = topAuthors.slice(0, 4)
+                each author in popularAuthors
+                  .col-md-5
+                    .card-header.bg-transparent.p-0.border-0
+                      a.card-header-img(href=('/posts/author/' + author._id))
+                        img.img.img-raised(src=author.profileImages.avatarImg)
+                  .col-md-7
+                    .card-body.pb-0
+                      a(href=('/posts/author/' + author._id))
+                        h4.card-title.text-white #{author.name}
+                      p.card-description.font-greyish.mb-0
+                        | #{author.about}
+                    .card-footer
+                      a.btn.btn-just-icon.btn-link.btn-transparent.text-white(href=author.socialHandles.handles.facebook target='_blank' rel='nofollow')
+                        i.fab.fa-facebook-square
+                      a.btn.btn-just-icon.btn-link.btn-transparent.text-white(href=author.socialHandles.handles.twitter target='_blank' rel='nofollow')
+                        i.fab.fa-twitter
+                      a.btn.btn-just-icon.btn-link.btn-transparent.text-white(href=author.socialHandles.handles.instagram target='_blank' rel='nofollow')
+                        i.fab.fa-instagram
+  // /TOP Authors Section
+

@@ -1,0 +1,59 @@
+extends ../layouts/author-main-layout.pug
+
+block assertJs
+  script(src="https://unpkg.com/sweetalert/dist/sweetalert.min.js" defer)
+
+block mainContent
+  .content
+    // All posts
+    .row
+      .col-md-12
+        .card.custom-card.full-height-card
+          .card-header
+            h5.card-title Drafts
+            p.card-category
+              | Showing All Drafts
+          .card-body
+            .container-fluid
+              // posts area
+              if Array.isArray(drafts) && drafts.length
+                .grid
+                  .grid-sizer
+                  each draft in drafts
+                    .grid-item
+                      .card
+                        .view.overlay
+                          img.card-img-top(src=("/" + draft.imageUrl) alt=draft.title)
+                          a()
+                            .mask.rgba-white-slight
+                        .card-body
+                          .post-detials.clearfix
+                            small.float-left Added on
+                            small.float-right #{prettifyDate(draft.postTime.dataAdded)}
+                          h5.card-title.h5 #{draft.title}
+                          p.card-text
+                            | #{draft.summary}
+                          .stats.clearfix
+                            small.float-left
+                              i.far.fa-clock.mr-1 
+                              | last edited #{timeSinceDate(draft.postTime.lastModified)} ago
+                        .card-footer.p-1
+                          hr.my-0
+                          .recent-post-actions.clearfix
+                            input(type="hidden", name="postId" value=draft._id)
+                            input(type="hidden", name="_csrf" value=csrfToken)
+                            a.btn.btn-primary.btn-sm(href=('/author/edit-post/' + draft._id + '?edit=true&isDraft=true'))
+                              i.fas.fa-edit.mr-1
+                              |  Edit
+                            button.btn.btn-danger.btn-sm.float-right(type="submit" onclick="deletePost(this)" draftDelete="true")
+                              i.fas.fa-trash-alt.mr-1
+                              |  Delete
+              else
+                h2.text-warning Your drafts are empty
+                p Add a draft by 
+                  a(href="/author/create-post")
+                    span.lead
+                      | &nbsp;
+                      i.fal.fa-pencil-alt 
+                      | &nbsp;
+                      | Creating a new post

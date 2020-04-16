@@ -1,0 +1,121 @@
+/* =========== start header search style ========== */
+.search-btn {
+  color: #969ba0;
+  background: #fff;
+  outline: none;
+}
+
+.search-btn:hover {
+  color: #6d6d6d;
+  transition: color ease-in;
+}
+
+.search-btn:focus,
+.search-btn:active {
+  outline: none;
+}
+
+.outline-0 {
+  padding-top: 22px;
+  padding-bottom: 22px;
+}
+
+.outline-0:focus,
+.outline-0:active {
+  outline: none;
+  box-shadow: none;
+  border-color: #fff !important;
+}
+/* =========== end header search style ========== */
+
+/* ========== start dark form style ============= */
+input.dark-form-style,
+textarea.dark-form-style,
+select.dark-form-style {
+  background: #363636c2;
+  border-color: transparent;
+  color: #a8c2db;
+}
+
+input.dark-form-style:focus,
+textarea.dark-form-style:focus,
+select.dark-form-style:focus {
+  color: #8a9fb4;
+  background-color: #3b434b;
+  border-color: dimgray;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem #282e3540;
+}
+/* ========== end dark form style =============== */
+
+/* ========== custom style ========== */
+.custom-form-control {
+  padding: 10px;
+}
+
+.custom-file-uploader {
+  position: relative;
+}
+.custom-file-uploader input[type='file'] {
+  display: block;
+  color: red;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 5;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: default;
+}
+
+.input-custom {
+  margin-top: 0;
+}
+
+.input-custom input[type='text'] {
+  border: none !important;
+}
+
+.custom-form-control,
+.input-custom,
+.ck-form {
+  background-color: #ffffff;
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+  color: #66615b;
+  line-height: normal;
+  font-size: 14px;
+  -webkit-transition: color 0.3s ease-in-out, border-color 0.3s ease-in-out,
+    background-color 0.3s ease-in-out;
+  -moz-transition: color 0.3s ease-in-out, border-color 0.3s ease-in-out,
+    background-color 0.3s ease-in-out;
+  -o-transition: color 0.3s ease-in-out, border-color 0.3s ease-in-out,
+    background-color 0.3s ease-in-out;
+  -ms-transition: color 0.3s ease-in-out, border-color 0.3s ease-in-out,
+    background-color 0.3s ease-in-out;
+  transition: color 0.3s ease-in-out, border-color 0.3s ease-in-out,
+    background-color 0.3s ease-in-out;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.custom-form-control:focus,
+.custom-file-uploader input[type='file']:focus,
+.input-custom:focus-within,
+.ck-form:focus-within {
+  border: 1px solid #9a9a9a;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  outline: 0 !important;
+  color: #66615b;
+}
+
+.custom-label {
+  font-size: 1em;
+  margin-bottom: 5px;
+  color: #9a9a9a;
+}
+

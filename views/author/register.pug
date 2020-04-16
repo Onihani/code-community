@@ -1,0 +1,50 @@
+
+extends ../layouts/author-register-layout.pug
+
+block mainContent
+  .login-form.border
+    .social-sign-in-wrapper.text-center
+      h5 Sign up with &#x1F913;&#x1F447;
+      .social-sign-ins
+        .social-sign-item.github.rounded-circle
+          a(href='#')
+            i.fab.fa-github
+        .social-sign-item.google.rounded-circle
+          a(href='#')
+            i.fab.fa-google
+        .social-sign-item.facebook.rounded-circle
+          a(href='#')
+            i.fab.fa-facebook-f
+    hr.w-75.mx-auto
+    p.text-center.mt-3
+      | or sign up via 
+      b Email
+    .login-form-wrapper.mt-4
+      form(action="/author/register", method="post" class="needs-validation" novalidate="true")
+        .md-form
+          i.fal.fa-user.prefix
+          input#username(type='text' name='username' value=(oldInput ? oldInput.authorName : '') class=((usernameErrMsg && validationErrors) ? 'form-control is-invalid' : (validationErrors && !usernameErrMsg) ? 'form-control is-valid' : 'form-control'))
+          label(for='username') Full Name
+          if usernameErrMsg && validationErrors
+            .invalid-feedback #{usernameErrMsg}
+        .md-form
+          i.fal.fa-envelope.prefix
+          input#email(type='email' name='email' required='true' value=(oldInput ? oldInput.email : '') class=((emailErrMsg && validationErrors) ? 'form-control is-invalid' : (validationErrors && !emailErrMsg) ? 'form-control is-valid' : 'form-control'))
+          label(for='email') Email
+          if emailErrMsg && validationErrors
+            .invalid-feedback #{emailErrMsg}
+        .md-form
+          i.fal.fa-lock.prefix
+          input#password(type='password' name='password' required='true' value=(oldInput ? oldInput.password : "") class=((passwordErrMsg && validationErrors) ? 'form-control is-invalid' : (validationErrors && !passwordErrMsg) ? 'form-control is-valid' : 'form-control'))
+          label(for='password') Password
+          if passwordErrMsg && validationErrors
+            .invalid-feedback #{passwordErrMsg}
+        .md-form
+          i.fal.fa-lock.prefix
+          input#cpassword(type='password' name='confirmPassword' value=(oldInput ? oldInput.confirmPassword : '') class=((confirmPasswordErrMsg && validationErrors) ? 'form-control is-invalid' : (validationErrors && !confirmPasswordErrMsg) ? 'form-control is-valid' : 'form-control'))
+          label(for='cpassword') Confirm Password
+          if confirmPasswordErrMsg && validationErrors
+            .invalid-feedback #{confirmPasswordErrMsg}
+        input(type="hidden", name="_csrf" value=csrfToken)
+        button.btn.btn-primary.btn-md.mx-auto.d-block(type='submit')
+          | Sign up

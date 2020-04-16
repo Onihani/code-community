@@ -1,0 +1,115 @@
+extends ../layouts/main-layout.pug
+  
+block customCss
+  link(rel='stylesheet' href='/css/main-blog.css')
+  link(rel='stylesheet' href='/css/blog-posts.css')
+
+block assertJs
+  // Masonry
+  script(type='text/javascript' src='/asserts/mdb4/js/addons/masonry.pkgd.min.js' defer='')
+  script(type='text/javascript' src='/asserts/mdb4/js/addons/imagesloaded.pkgd.min.js' defer='')
+
+block customJs
+  script(src='/js/blog-posts.js' defer='')
+
+block navbar
+  // Navbar
+  nav#mainNavbar.navbar.navbar-color-on-scroll.navbar-expand-lg.navbar-light.px-5.py-3.mb-3
+    .container
+      .navbar-translate
+        a.navbar-brand.text-reste(href='/')
+          | Blogy
+        button.navbar-toggler.navbar-toggler-main(type='button' data-toggle='collapse' aria-expanded='false' aria-label='Toggle navigation' data-target='#sectionsNav')
+          span.sr-only Toggle navigation
+          span.navbar-toggler-icon
+          span.navbar-toggler-icon
+          span.navbar-toggler-icon
+      #sectionsNav.collapse.navbar-collapse
+        ul.navbar-nav.ml-auto
+          li.button-container.dropdown.nav-item.mr-lg-2
+            a.btn.btn-info.btn-round.btn-block.dropdown-toggle(href='' target='_blank' data-toggle='dropdown')
+              | Login as
+            .dropdown-menu.dropdown-with-icons
+              a.dropdown-item.mx-2(href='/author')
+                strong Author
+                | &nbsp;to manage articles
+              a.dropdown-item.mx-2(href='/comment')
+                strong Member
+                | &nbsp;to comment
+          li.button-container.nav-item
+            a.btn.btn-pink.btn-round.btn-block(href='/community' target='_blank')
+              i.material-icons forum
+              |  Community
+  // /.Navbar
+
+block mainContent
+  .section
+    .container
+      .row
+        .col-md-11.mx-auto
+          // All Posts Section
+          h2.title.text-capitalize 
+            if currentCategory 
+              | #{currentCategory} 
+            else if (sortTag)
+              | Articles with tag 
+              span.font-weight-bold #{sortTag}
+            else if (sortAuthor)
+              | Articles from 
+              span.font-weight-bold #{sortAuthor}
+            else
+              | All Articles
+          .card.card-plain.mt-5
+            // All Posts in Masonry
+            if posts.length > 0
+              .grid.mb-5
+                .grid-sizer
+                each post in posts
+                  .grid-item.mb-4
+                    .py-2
+                      .card.card-plain
+                        .card-header.bg-white.p-0.border-0
+                          a.card-header-img(href=('/posts/singlepost/' + post._id))
+                            img.img-raised.effect5.img-fuild(src=('/' + post.imageUrl) alt='Post Image')
+                        .card-body
+                          h6.card-category.mt-0
+                            a.grey-text.text-uppercase(href=('/posts?category=' + post.category))
+                              small #{post.category}
+                          h4.card-title.font-18
+                            a.text-reset(href=('/posts/singlepost/' + post._id)) #{post.title}
+                          p.card-tags
+                            each tag in post.tags
+                              a(href=('/posts?withtag=' + tag))
+                                span.badge.badge-pill #{tag}
+                              | &nbsp;
+                          p.card-description
+                            | #{post.summary} 
+                            a.purple-text(href=('/posts/singlepost/' + post._id)) Read More
+                          .clearfix
+                            .author.float-left.d-flex.justify-content-center.align-items-center
+                              a(href=('/posts/author/' + post.author._id))
+                                img.rounded-circle.post-author-img.border.mr-2(src=post.author.profileImages.avatarImg alt='author avatar')
+                              a.text-default(href=('/posts/author/' + post.author._id))
+                                b #{post.author.name}
+                            .read-time.float-right.text-muted
+                              i.fal.fa-watch.mr-1
+                              | #{post.readtime} mins read
+            else
+              h3.title.font.font-weight-lighter.my-5.text-center No Articles Found 😟 !!!
+              
+            // /all posts in Masonry
+            // Post Pagination
+            nav(aria-label='Page navigation example')
+              ul.pagination.pagination-circle.pg-purple.justify-content-center
+                ul.pagination(role='navigation')
+                  li(aria-disabled='true' aria-label='« Previous' class=(hasPreviousPage ? 'page-item' : 'page-item disabled'))
+                    a.page-link(href=(currentCategory ? '?category=' + currentCategory + '&page=' + previousPage : '?page=' + previousPage) aria-hidden='true' disabled=hasPreviousPage!=true) Previous
+                  - var pages = Array(lastPage).fill().map((_, i) => i + 1)
+                  each page in pages
+                    li(aria-current='page' class=(page == currentPage ? 'active page-item' : 'page-item'))
+                      a.page-link(href=(currentCategory ? '?category=' + currentCategory + '&page=' + page : '?page=' + page)) #{page}
+                  li(class=(hasNextPage ? 'page-item' : 'page-item disabled'))
+                    a.page-link(href=(currentCategory ? '?category=' + currentCategory + '&page=' + nextPage : '?page=' + nextPage) rel='next' aria-label='Next »' disabled=hasNextPage!=true) Next
+            // /post pagination
+
+

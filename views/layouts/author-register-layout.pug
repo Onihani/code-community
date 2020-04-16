@@ -1,0 +1,93 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  meta(http-equiv='X-UA-Compatible' content='ie=edge')
+  link(rel="shortcut icon" type="image/svg" href="/image-resources/logos/blogy-logo-3-color.svg")
+
+  title Document
+  // ========== CSS =========
+  // Bootstrap core CSS
+  link(rel='stylesheet' href='/asserts/mdb4/css/bootstrap.min.css')
+  // Material Design Bootstrap
+  link(rel='stylesheet' href='/asserts/mdb4/css/mdb.min.css')
+  // Font Awesome
+  link(rel='stylesheet' href='/asserts/fontawesome/css/all.css')
+  // Animate Css
+  link(rel='stylesheet' href='/asserts/animatecss/animate.css')
+  // Custom
+  link(rel='stylesheet' href='/css/main.css')
+  link(rel='stylesheet' href='/css/forms.css')
+  link(rel='stylesheet' href='/css/dev.css')
+  // ========== JS ==========
+  // Font Awesome
+  // <script src="https://kit.fontawesome.com/88cfe1b266.js" defer></script>
+  // jQuery
+  script(type='text/javascript' src='/asserts/mdb4/js/jquery.min.js' defer='')
+  // Bootstrap tooltips
+  script(type='text/javascript' src='/asserts/mdb4/js/popper.min.js' defer='')
+  // Bootstrap core JavaScript
+  script(type='text/javascript' src='/asserts/mdb4/js/bootstrap.min.js' defer='')
+  // MDB core JavaScript
+  script(type='text/javascript' src='/asserts/mdb4/js/mdb.min.js' defer='')
+  // Custom
+  script(type='text/javascript' src='/js/main.js' defer='')
+header
+  // Navbar
+  nav.navbar.navbar-expand-lg.navbar-dark.mdb-color.darken-3
+    .container
+      // Navbar brand
+      a.navbar-brand(href='#') Blogy Dev
+      // Collapse button
+      button.navbar-toggler(type='button' data-toggle='collapse' data-target='#basicExampleNav' aria-controls='basicExampleNav' aria-expanded='false' aria-label='Toggle navigation')
+        span.navbar-toggler-icon
+      // Collapsible content
+      #basicExampleNav.collapse.navbar-collapse
+        // Links
+        ul.navbar-nav.ml-auto
+          li(class=(path === '/author' ? 'nav-item active' : 'nav-item'))
+            a.nav-link(href='/author') Login
+          li(class=(path === '/author/register' ? 'nav-item active' : 'nav-item'))
+            a.nav-link(href='/author/register') Become a tutor
+          li.nav-item
+            a.nav-link(href='/')
+              i.fal.fa-sign-in-alt
+              |                   Return to blogy
+        // Links
+      // Collapsible content
+  // /.Navbar
+main.welcome-page.h-100.bg.login-register-bg
+  .overlay
+    .py-5.mb-5
+      .container
+        .welcome-text.text-white.mt-4
+          h3 Welcome To Blogy Dev (Content Creator) Section
+          p.lead
+            b
+              a.btn-link.link-lr(href='/author') Login
+            |  or
+            b
+              a.btn-link.link-lr(href='/author/register') Sign Up
+            |  To Join Us Share Our Knowledge
+            |                 with the Dev Community
+
+        block mainContent
+    // =============== Start Login/Regiter Footer ==================
+    footer.page-footer.font-small.rgba-indigo-strong
+      .container-fluid
+        .row
+          .col-md-7
+            ul.nav.transparent.lighten-5.font-weight-bold.py-3
+              li.nav-item
+                a.nav-link.active.blue-grey-text(href='#!') Home
+              li.nav-item
+                a.nav-link.blue-grey-text(href='#!') Blog
+              li.nav-item
+                a.nav-link.blue-grey-text(href='#!') About
+              li.nav-item
+                a.nav-link.blue-grey-text(href='#!') Contact
+          .col-md-5
+            .footer-copyright.text-center.py-3
+              | &copy; 2020 Copyright:
+              a(href='#') Blogy
+    // ================= End Login/Register Footer =================

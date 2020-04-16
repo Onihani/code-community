@@ -1,0 +1,126 @@
+header {
+  background: initial;
+}
+/* ============ login area style start ============= */
+.welcome-page .overlay {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.welcome-text {
+  text-align: center;
+  color: darkgrey;
+}
+
+.welcome-text h3 {
+  font-weight: 500;
+  font-family: "Montserrat", sans-serif;
+}
+
+.welcome-text p {
+  font-stretch: semi-expanded;
+  font-size: 18px;
+}
+
+.login-register-bg {
+  background: url("https://source.unsplash.com/random/900×700/?coding,knowledge,author,developer,writer");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.link-lr {
+  padding-left: 8px;
+  padding-right: 8px;
+  font-weight: 400;
+  color: #4786c5;
+}
+
+.link-lr:hover {
+  color: #406592;
+  transition: color ease-in-out 0.6s;
+}
+
+.login-form {
+  margin: 0 auto;
+  margin-top: 3rem;
+  max-width: 700px;
+  padding: 30px 20px;
+  background: rgba(241, 245, 251, 0.9);
+  border-radius: 10px;
+}
+
+.social-sign-ins {
+  padding: 10px;
+  max-width: 70%;
+  margin: 10px auto;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: space-around;
+}
+
+.social-sign-item {
+  border: 1px solid transparent;
+  width: 45px;
+}
+
+.social-sign-item a {
+  color: inherit;
+}
+
+.social-sign-item a .fab {
+  padding: 8px;
+  font-size: 28px;
+}
+
+.social-sign-item.github {
+  background-color: #2f2f2f;
+  color: azure !important;
+}
+
+.social-sign-item.github:hover {
+  background: #141111;
+  color: #a2a5a5;
+  transition: all ease-in-out 0.5s;
+}
+
+.social-sign-item.google {
+  background-color: #da5f41;
+  color: #bc3c1c;
+}
+
+.social-sign-item.google:hover {
+  background-color: #d44d2c;
+  color: #f17a56;
+}
+
+.social-sign-item.facebook {
+  background-color: #3180b1;
+  color: #0e4883;
+}
+
+.social-sign-item.facebook:hover {
+  background-color: #287fb6;
+  color: #1362b1;
+}
+
+.social-sign-item:hover {
+  animation-name: tada;
+  animation-duration: 1.2s;
+}
+
+.login-form-wrapper .md-form {
+  max-width: 400px;
+  margin: 0 auto;
+  margin-bottom: 3rem;
+}
+
+.author-avatar-img {
+  width: 34px;
+  max-height: 34px;
+}
+
+.full-height-card {
+  min-height: calc(90vh - 123px);
+}

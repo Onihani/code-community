@@ -1,0 +1,154 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  meta(http-equiv='X-UA-Compatible' content='ie=edge')
+  link(rel="shortcut icon" type="image/svg" href="/image-resources/logos/blogy-logo-3-color.svg")
+
+  title #{pageTitle}
+  // ========== CSS =========
+  // Fonts
+  link(href='https://fonts.googleapis.com/css?family=Montserrat:400,700,200' rel='stylesheet')
+  // Bootstrap core CSS
+  link(rel='stylesheet' href='/asserts/mdb4/css/bootstrap.min.css')
+  // Material Design Bootstrap
+  link(rel='stylesheet' href='/asserts/mdb4/css/mdb.min.css')
+  // Font Awesome
+  link(rel='stylesheet' href='/asserts/fontawesome/css/all.css')
+  // Animate Css
+  link(rel='stylesheet' href='/asserts/animatecss/animate.css')
+  // Material Icons
+  link(href='https://fonts.googleapis.com/icon?family=Material+Icons' rel='stylesheet')
+  block assertCss
+  // Custom
+  link(rel='stylesheet' href='/css/main.css')
+  link(rel='stylesheet' href='/css/forms.css')
+  link(rel='stylesheet' href='/css/dev.css')
+  link(rel='stylesheet' href='/css/sidebar-theme.css')
+  block customCss
+  // ========== JS ==========
+  // Font Awesome
+  // <script src="https://kit.fontawesome.com/88cfe1b266.js" defer></script>
+  // jQuery
+  script(type='text/javascript' src='/asserts/mdb4/js/jquery.min.js' defer='')
+  // Bootstrap tooltips
+  script(type='text/javascript' src='/asserts/mdb4/js/popper.min.js' defer='')
+  // Bootstrap core JavaScript
+  script(type='text/javascript' src='/asserts/mdb4/js/bootstrap.min.js' defer='')
+  // MDB core JavaScript
+  script(type='text/javascript' src='/asserts/mdb4/js/mdb.min.js' defer='')
+  // masonry
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js' defer='')
+  block assertJs
+  // Custom
+  script(type='text/javascript' src='/js/main.js' defer='')
+  script(src='/js/dev.js' defer='')
+  block customJs
+.page-wrapper
+  header
+    // Sidebar
+    #sidebar(data-color='white' data-active-color='danger')
+      .sidebar-header
+        .logo
+          a.simple-text.logo-mini(href='/author/profile')
+            .logo-image-small
+              if authorAvatar
+                img.author-avatar-img.rounded-circle(src=authorAvatar)
+              else
+                i.material-icons face
+          a.simple-text.logo-normal(href='/author/profile')
+            | #{authorName}
+      .sidebar-wrapper
+        ul.sidebar-nav.nav
+          li(class=(path === '/author/dashboard' ? 'active' : ''))
+            a(href='/author/dashboard')
+              i.fal.fa-university
+              p Dashboard
+          li(class=(path === '/author/posts' ? 'active' : ''))
+            a(href='/author/posts')
+              i.material-icons assignment
+              p Posts
+          li(class=(path === '/author/create-post' ? 'active' : ''))
+            a(href='/author/create-post')
+              i.fal.fa-pencil-alt
+              p Create Post
+          li(class=(path === '/author/insights' ? 'active' : ''))
+            a(href='/author/insights')
+              i.fal.fa-chart-line
+              p Insights
+          li(class=(path === '/author/drafts' ? 'active' : ''))
+            a(href='/author/drafts')
+              i.fal.fa-archive
+              p Drafts
+    // /Sidebar
+  // main page content
+  main.main-panel
+    // panel nav
+    // Navbar
+    nav.navbar.navbar-expand-lg.panel-navbar.navbar-light.rgba-white-slight(class='rgba(255, 255, 255, 0.1)')
+      // Navbar brand
+      a.navbar-brand(href='#') Author Dashboard
+      // Collapse button
+      button.navbar-toggler(type='button' data-toggle='collapse' data-target='#basicExampleNav' aria-controls='basicExampleNav' aria-expanded='false' aria-label='Toggle navigation')
+        span.navbar-toggler-icon
+      // Collapsible content
+      #basicExampleNav.collapse.navbar-collapse
+        form.form-inline.ml-auto
+          .md-form.md-form-sm.input-group.my-0
+            input.form-control.form-control-sm(type='text' placeholder='Search' aria-label='Search')
+            .input-group-append
+              button#basic-addon11.input-group-text
+                i.fal.fa-search
+        // Links
+        ul.navbar-nav
+          li.nav-item
+            a.nav-link(href='/author/drafts')
+              i.fal.fa-archive
+          li.nav-item
+            a.nav-link(href='/author/insights')
+              i.fal.fa-chart-line
+          // Dropdown
+          li.nav-item.dropdown
+            a#navbarDropdownMenuLink-333.nav-link.dropdown-toggle(data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+              i.fal.fa-cog
+            .dropdown-menu.dropdown-menu-right.dropdown-default(aria-labelledby='navbarDropdownMenuLink-333')
+              a.dropdown-item(href='#')
+                | Report An Issue &nbsp; &nbsp;
+                i.fal.fa-bug 
+              a.dropdown-item(href='#') 
+                form.w-auto(action="/author/logout", method="post")
+                  input(type="hidden", name="_csrf" value=csrfToken)
+                  button(type="submit" class="btn btn-link p-0 sign-out-btn") Sign Out &nbsp; &nbsp;
+                    i.fal.fa-sign-out-alt
+
+        // Links
+      // Collapsible content
+    // /.Navbar
+    // /.panel nav
+    // panel-content
+
+    block mainContent
+    
+    // /.panel-content
+    // panel-footer
+    footer.footer.rgba-white-slight(class='rgba(255, 255, 255, 0.1)')
+      .container-fluid
+        .row
+          nav.footer-nav
+            ul.nav
+              li.nav-item
+                a.nav-link(href='/' target='_blank') Blogy
+              li.nav-item
+                a.nav-link(href='/posts' target='_blank') Blog
+              li.nav-item
+                a.nav-link(href='/contact' target='_blank') Reach Us
+          .credits.ml-auto
+            span.copyright
+              | &copy; 
+              script.
+                document.write(new Date().getFullYear());
+              |                   , made with 
+              i.fa.fa-heart.heart
+              |  by Creative Lyfe
+    // /.panel-footer
+  // /main page content

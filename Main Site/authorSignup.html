@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <!-- ========== CSS ========= -->
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="asserts/mdb4/css/bootstrap.min.css" />
+    <!-- Material Design Bootstrap -->
+    <link rel="stylesheet" href="asserts/mdb4/css/mdb.min.css" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="asserts/fontawesome/css/all.css" />
+    <!-- Animate Css -->
+    <link rel="stylesheet" href="asserts/animatecss/animate.css" />
+    <!-- Custom -->
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/forms.css" />
+    <link rel="stylesheet" href="./css/dev.css" />
+
+    <!-- ========== JS ========== -->
+    <!-- Font Awesome -->
+    <!-- <script src="https://kit.fontawesome.com/88cfe1b266.js" defer></script> -->
+    <!-- jQuery -->
+    <script
+      type="text/javascript"
+      src="asserts/mdb4/js/jquery.min.js"
+      defer
+    ></script>
+    <!-- Bootstrap tooltips -->
+    <script
+      type="text/javascript"
+      src="asserts/mdb4/js/popper.min.js"
+      defer
+    ></script>
+    <!-- Bootstrap core JavaScript -->
+    <script
+      type="text/javascript"
+      src="asserts/mdb4/js/bootstrap.min.js"
+      defer
+    ></script>
+    <!-- MDB core JavaScript -->
+    <script
+      type="text/javascript"
+      src="asserts/mdb4/js/mdb.min.js"
+      defer
+    ></script>
+    <!-- Custom -->
+    <script type="text/javascript" src="./js/main.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <!--Navbar-->
+      <nav class="navbar navbar-expand-lg navbar-dark mdb-color darken-3">
+        <div class="container">
+          <!-- Navbar brand -->
+          <a class="navbar-brand" href="#">Blogy Dev</a>
+
+          <!-- Collapse button -->
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#basicExampleNav"
+            aria-controls="basicExampleNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <!-- Collapsible content -->
+          <div class="collapse navbar-collapse" id="basicExampleNav">
+            <!-- Links -->
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="#">Login</a>
+              </li>
+              <li class="nav-item  active">
+                <a class="nav-link" href="#">Become a tutor</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <i class="fal fa-sign-in-alt"></i>
+                  Return to blogy
+                </a>
+              </li>
+            </ul>
+            <!-- Links -->
+          </div>
+          <!-- Collapsible content -->
+        </div>
+      </nav>
+      <!--/.Navbar-->
+    </header>
+
+    <main class="welcome-page h-100 bg login-register-bg">
+      <div class="overlay">
+        <div class="py-5 mb-5">
+          <div class="container">
+            <div class="welcome-text text-white mt-4">
+              <h3>Welcome To Blogy Dev (Content Creator) Section</h3>
+              <p class="lead">
+                <b><a class="btn-link link-lr" href="#">Login</a></b> or
+                <b><a class="btn-link link-lr" href="#">Sign Up</a></b> To Join Us Share Our Knowledge
+                with the Dev Community
+              </p>
+            </div>
+            <div class="login-form border">
+              <div class="social-sign-in-wrapper text-center">
+                <h5>Sign up with 🤓👇</h5>
+                <div class="social-sign-ins">
+                  <div class="social-sign-item github rounded-circle">
+                    <a href="#"><i class="fab fa-github"></i></a>
+                  </div>
+                  <div class="social-sign-item google rounded-circle">
+                    <a href="#"><i class="fab fa-google"></i></a>
+                  </div>
+                  <div class="social-sign-item facebook rounded-circle">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                  </div>
+                </div>
+              </div>
+              <hr class="w-75 mx-auto" />
+              <p class="text-center mt-3">or sign up via <b>Email</b></p>
+              <div class="login-form-wrapper mt-4">
+                <div class="md-form">
+                  <i class="fal fa-user prefix"></i>
+                  <input type="text" name="username" id="username" class="form-control">
+                  <label for="username">Full Name</label>
+                </div>
+                <div class="md-form">
+                  <i class="fal fa-envelope prefix"></i>
+                  <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    class="form-control"
+                  />
+                  <label for="email">Email</label>
+                </div>
+                <div class="md-form">
+                  <i class="fal fa-lock prefix"></i>
+                  <input
+                    type="password"
+                    name="password"
+                    id="password"
+                    class="form-control"
+                  />
+                  <label for="password">Password</label>
+                </div>
+                <div class="md-form">
+                  <i class="fal fa-lock prefix"></i>
+                  <input
+                    type="password"
+                    name="cpassword"
+                    id="cpassword"
+                    class="form-control"
+                  />
+                  <label for="cpassword">Confirm Password</label>
+                </div>
+                <button
+                  type="submit"
+                  class="btn btn-primary btn-md mx-auto d-block"
+                >
+                  Sign up
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- =============== Start Login/Regiter Footer ================== -->
+        <footer class="page-footer font-small rgba-indigo-strong">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-7">
+                <ul
+                  class="nav transparent lighten-5 font-weight-bold py-3"
+                >
+                  <li class="nav-item">
+                    <a class="nav-link active blue-grey-text" href="#!">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link blue-grey-text" href="#!">Blog</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link blue-grey-text" href="#!">About</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link blue-grey-text" href="#!">Contact</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-md-5">
+                <div class="footer-copyright text-center py-3">
+                  © 2020 Copyright:
+                  <a href="#">Blogy</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </footer>
+        <!-- ================= End Login/Register Footer ================= -->
+      </div>
+    </main>
+  </body>
+</html>

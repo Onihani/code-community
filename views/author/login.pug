@@ -1,0 +1,37 @@
+extends ../layouts/author-register-layout.pug
+
+block mainContent
+  .login-form.border
+    .social-sign-in-wrapper.text-center
+      h5 Sign in with &#x1F913;&#x1F447;
+      .social-sign-ins
+        .social-sign-item.github.rounded-circle
+          a(href='#')
+            i.fab.fa-github
+        .social-sign-item.google.rounded-circle
+          a(href='#')
+            i.fab.fa-google
+        .social-sign-item.facebook.rounded-circle
+          a(href='#')
+            i.fab.fa-facebook-f
+    hr.w-75.mx-auto
+    p.text-center.mt-3
+      | or sign in via 
+      b Email
+    .login-form-wrapper.mt-4
+      form(action="/author/login", method="post")
+        .md-form
+          i.fal.fa-envelope.prefix
+          input#email(type='email' name='email' value=(oldInput ? oldInput.email : '') class=((emailErrMsg && validationErrors) ? 'form-control is-invalid' : (validationErrors && !emailErrMsg) ? 'form-control is-valid' : 'form-control'))
+          label(for='email') Email
+          if emailErrMsg && validationErrors
+          .invalid-feedback #{emailErrMsg}
+        .md-form
+          i.fal.fa-lock.prefix
+          input#password(type='password' name='password' value=(oldInput ? oldInput.password : '') class=((passwordErrMsg && validationErrors) ? 'form-control is-invalid' : (validationErrors && !passwordErrMsg) ? 'form-control is-valid' : 'form-control'))
+          label(for='password') Password
+          if passwordErrMsg && validationErrors
+          .invalid-feedback #{passwordErrMsg}
+        input(type="hidden", name="_csrf" value=csrfToken)
+        button.btn.btn-primary.btn-md.mx-auto.d-block(type='submit')
+          | Sign in

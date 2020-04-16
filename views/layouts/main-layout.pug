@@ -1,0 +1,183 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  meta(http-equiv='X-UA-Compatible' content='ie=edge')
+  link(rel="shortcut icon" type="image/svg" href="/image-resources/logos/blogy-logo-3-color.svg")
+
+  block meta
+  title #{pageTitle}
+  // ========== CSS =========
+  // Fonts
+  link(href='https://fonts.googleapis.com/css?family=Montserrat:400,700,200' rel='stylesheet')
+  // Bootstrap core CSS
+  link(rel='stylesheet' href='/asserts/mdb4/css/bootstrap.min.css')
+  // Material Design Bootstrap
+  link(rel='stylesheet' href='/asserts/mdb4/css/mdb.min.css')
+  // Font Awesome
+  link(rel='stylesheet' href='/asserts/fontawesome/css/all.css')
+  // Animate Css
+  link(rel='stylesheet' href='/asserts/animatecss/animate.css')
+  // Material Icons
+  link(href='https://fonts.googleapis.com/icon?family=Material+Icons' rel='stylesheet')
+  // Owl Carousel
+  link(rel='stylesheet' href='/asserts/owlcarousel/assets/owl.carousel.min.css')
+  link(rel='stylesheet' href='/asserts/owlcarousel/assets/owl.theme.default.min.css')
+  block assertCss
+  // Custom
+  block customCss
+  
+  // ========== JS ==========
+  script(type='text/javascript' src='/asserts/mdb4/js/jquery.min.js' defer='')
+  // Bootstrap tooltips
+  script(type='text/javascript' src='/asserts/mdb4/js/popper.min.js' defer='')
+  // Bootstrap core JavaScript
+  script(type='text/javascript' src='/asserts/mdb4/js/bootstrap.min.js' defer='')
+  // MDB core JavaScript
+  script(type='text/javascript' src='/asserts/mdb4/js/mdb.min.js' defer='')
+  // Owl Carousel
+  script(src='/asserts/owlcarousel/owl.carousel.min.js' defer='')
+  block assertJs
+  // Custom
+  block customJs
+  
+main
+  block navbar
+  
+  block header
+  
+  // Main Blogy Container
+  .container-fluid.free-bird.shadow-sm
+    .row
+      .col-11.col-md-10.col-lg-11.mx-auto.float-none.white.z-depth-3.rounded.px-0
+        // blogy-posts-main-nav
+        nav.navbar.navbar-expand-lg.navbar-grey.bg-white.navbar-text-gray.rounded-top.mb-5
+          .container
+            .navbar-translate
+              button.navbar-toggler(type='button' data-toggle='collapse' aria-expanded='false' aria-label='Toggle navigation' data-target='#pagesNav')
+                span.sr-only Toggle navigation
+                span.navbar-toggler-icon
+                span.navbar-toggler-icon
+                span.navbar-toggler-icon
+              span.float-left.menu.d-lg-none Menu
+            #pagesNav.collapse.navbar-collapse
+              ul.navbar-nav
+                li.nav-item
+                  a.nav-link(href='/posts?category=programming')
+                    strong Programming
+                li.nav-item
+                  a.nav-link(href='/posts?category=code note')
+                    strong Codenotes
+                li.nav-item
+                  a.nav-link(href='/posts?category=how to')
+                    strong How To
+                li.nav-item
+                  a.nav-link(href='/posts?category=motivation')
+                    strong Motivation
+                li.nav-item
+                  a.nav-link(href='/posts?category=inspiration')
+                    strong Inspiration
+                li.nav-item
+                  a.nav-link(href='/posts?category=code challenge')
+                    strong Code Challenge
+                li.nav-item
+                  a.nav-link(href='/posts')
+                    strong All Articles
+              form.form-inline.ml-auto(action='https://material-blog-pro-laravel.creative-tim.com/search')
+                .form-group
+                  .md-form.my-0
+                    input.form-control.form-control-sm(type='text' name='searching' placeholder='Search')
+                button.btn.btn-white.btn-just-icon.btn-round(type='submit' style='margin-right: 30px; font-size: 18px;')
+                  i.material-icons search
+        // /blogy-posts-main-nav
+        block mainContent
+  // /.Main Blogy Container
+  // Main Blogy Footer
+  footer.footer.big-footer.footer-white
+    .container
+      .content
+        .row
+          .col-md-3
+            h5.title Authors
+            ul.links-vertical
+              each author in topAuthors
+                li
+                  a(href=('/posts/author/' + author._id))
+                    | #{author.name}
+          .col-md-3
+            h5.title Categories
+            ul.links-vertical
+              li
+                a(href='/posts?category=programming')
+                  | Programming
+              li
+                a(href=href='/posts?category=code note')
+                  | Code Notes
+              li
+                a(href='/posts?category=how to')
+                  | How To
+              li
+                a(href='/posts?category=motivation')
+                  | Motivation
+              li
+                a(href='/posts?category=inspiration')
+                  | Inspiration
+              li
+                a(href='/posts?category=code challenge')
+                  | Code Challange
+          .col-md-3
+            h5.title Tags
+            ul.links-horizontal
+              each tag in blogTags
+                li
+                  a(style='padding:1px' href=('/posts?withtag=' + tag))
+                    span.badge.badge-pill(style=('background-color: ' + getRandomColor() + ';')) #{tag}
+          .col-md-3
+            h5.title Subscribe to Newsletter
+            p.text-muted
+              | Join our newsletter and get news in your inbox every week! We hate spam too, so no worries about
+              | this.
+            form(action='' method='post')
+              .md-form.form-sm.my-1
+                input#subcriptionUserEmail.form-control.form-control-sm(type='email')
+                label(for='subcriptionUserEmail') Your Email
+              .text-center
+                button.btn.btn-secondary.btn-sm.btn-round(type='submit') Subscribe
+      hr
+      nav
+        ul.nav.justify-content-center.white.lighten-4.py-0.font-weight-bold.text-uppercase.font-12.blogy-subnav
+          li.nav-item
+            a.nav-link.active(href='#!') About us
+          li.nav-item
+            a.nav-link(href='/posts') Articles
+          li.nav-item
+            a.nav-link(href='/community') Community
+          li.nav-item
+            a.nav-link(href='#!') Contact us
+      ul.social-buttons
+        li
+          a.btn.btn-just-icon.btn-link.btn-twitter(href='#')
+            i.fab.fa-twitter
+        li
+          a.btn.btn-just-icon.btn-link.btn-facebook(href='#')
+            i.fab.fa-facebook-square
+        li
+          a.btn.btn-just-icon.btn-link.btn-dribbble(href='#')
+            i.fab.fa-dribbble
+        li
+          a.btn.btn-just-icon.btn-link.btn-google(href='#')
+            i.fab.fa-google-plus
+        li
+          a.btn.btn-just-icon.btn-link.btn-youtube(href='#')
+            i.fab.fa-youtube
+      .text-center
+        .copyright.pull-center
+          | Copyright &copy;
+          script.
+            document.write(new Date().getFullYear())
+          |  a 
+          a.purple-text(href='#') Creative Lyfe
+          |  &amp; 
+          a.purple-text(href='#') I Code In GH
+          |  innovation All Rights Reserved.
+  // /Main Blogy Footer

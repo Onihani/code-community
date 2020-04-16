@@ -1,0 +1,146 @@
+extends ../layouts/author-main-layout.pug
+
+block assertCss
+  // Include external CSS.
+  link(href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css' rel='stylesheet' type='text/css')
+  link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.css')
+  // Include Editor style.
+  //- link(href='https://cdn.jsdelivr.net/npm/froala-editor@2.5.1/css/froala_editor.pkgd.min.css' rel='stylesheet' type='text/css')
+  //- link(href='https://cdn.jsdelivr.net/npm/froala-editor@2.5.1/css/froala_style.min.css' rel='stylesheet' type='text/css')
+
+block assertJs
+  // Include external JS libs.
+  script(type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js' defer='')
+  script(type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.js' defer='')
+  script(type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/mode/xml/xml.min.js' defer='')
+  // Include Editor JS files.
+  //- script(type='text/javascript' src='https://cdn.jsdelivr.net/npm/froala-editor@2.5.1//js/froala_editor.pkgd.min.js' defer='')
+  script(src='https://cdn.tiny.cloud/1/ququ5gh2k5szcsc8mf2ybt8xp7hnz998rnpcnohlr87jpew3/tinymce/5/tinymce.min.js' referrerpolicy="origin" defer)
+
+block mainContent
+  .content
+    // All posts
+    .row
+      .col-md-12
+        .card.custom-card
+          .card-header
+            h5.card-title Post EDITOR
+            //- p.card-category
+            //-   | Showing All Posts
+          .card-body
+            .container-fluid
+              // create posts area
+              .create-post-area
+                form(action=(editing ? "/author/edit-post" : "/author/create-post") method="post" enctype="multipart/form-data")
+                  .row
+                    .col-md-12
+                      .form-group
+                        label.custom-label Post Title
+                        input(type='text' name="postTitle" placeholder='Post Title Here' class=((validationErrors && postTitleErrMsg) ? 'form-control custom-form-control is-invalid' : 'form-control custom-form-control') value=((oldInput && oldInput.postTitle != undefined) ? oldInput.postTitle : (editing) ? post.title : ''))
+                        if postTitleErrMsg && validationErrors
+                          .invalid-feedback #{postTitleErrMsg}
+                  .row
+                    .col-md-12
+                      .form-group
+                        label.custom-label(for="postCategory") Post Category
+                        select#postCategory(name="postCategory" class=((validationErrors && postCategoryErrMsg) ? 'form-control form-control-lg custom-form-control is-invalid' : 'form-control form-control-lg custom-form-control') value=((oldInput && oldInput.postCategory != undefined) ? oldInput.postCategory : (editing) ? post.category : ''))
+                          if editing 
+                            option(value="" selected=post.category==null disabled hidden) Select Prefered Category
+                            option(value="programming" selected=post.category=='programming') Programming
+                            option(value="code note" selected=post.category=='code note') Code Note
+                            option(value="how to" selected=post.category=='how to') How To
+                            option(value="motivation" selected=post.category=='motivation') Motivation
+                            option(value="inspiration" selected=post.category=='inspiration') Inspiration
+                            option(value="code challenge" selected=post.category=='code challenge') Code Challenge
+                          else 
+                            option(value="" selected disabled hidden) Select Prefered Category
+                            option(value="programming") Programming
+                            option(value="code note") Code Note
+                            option(value="how to") How To
+                            option(value="motivation") Motivation
+                            option(value="inspiration") Inspiration
+                            option(value="code challenge") Code Challenge
+                        if postCategoryErrMsg && validationErrors
+                          .invalid-feedback #{postCategoryErrMsg}
+                  .row
+                    .col-md-12
+                      .form-group
+                        label.custom-label Post Image (optional)
+                        .md-form.md-form-sm.input-group.input-custom.mb-0
+                          input.form-control.custom-form-control(type='text' name='filename' placeholder='No file selected' value=((oldInput && oldInput.filename != undefined) ? oldInput.filename : (editing) ? post.imageUrl : "") class=((validationErrors && postImageErrMsg) ? 'form-control custom-form-control is-invalid' : 'form-control custom-form-control') readonly='')
+                          span.input-group-append
+                            .btn.btn-default.custom-file-uploader
+                              input(type='file' name='postImage' onchange="this.form.filename.value = this.files.length ? this.files[0].name : ''")
+                              | Select a file
+                          if postImageErrMsg && validationErrors
+                            .invalid-feedback #{postImageErrMsg}
+                        small 
+                          b Note: 
+                          | File should be of type gif, png, jpeg, jpg (other file types will not be uploaded)
+                  .row
+                    .col-md-12
+                      .form-group
+                        label.custom-label Post Summary
+                        textarea(name="postSummary", cols="30", rows="4" class=((validationErrors && postSummaryErrMsg) ? 'form-control custom-form-control is-invalid' : 'form-control custom-form-control'))
+                          if oldInput && oldInput.postSummary != undefined 
+                            | #{oldInput.postSummary} 
+                          else if editing
+                            | #{post.summary}
+                          else
+                            |
+                        if postSummaryErrMsg && validationErrors
+                          .invalid-feedback #{postSummaryErrMsg}
+                  .row
+                    .col-md-12
+                      .form-group
+                        label.custom-label Post Tags
+                        input(type='text' name="postTags" placeholder='+ Tag' class=((validationErrors && postTagsErrMsg) ? 'form-control custom-form-control is-invalid' : 'form-control custom-form-control') value=((oldInput && oldInput.postTags != undefined) ? oldInput.postTags : (editing) ? post.tags.join(', ') : ''))
+                        if postTagsErrMsg && validationErrors
+                          .invalid-feedback #{postTagsErrMsg}
+                        small 
+                          b Note: 
+                          | Multiple tags should be seperated by commas (eg: html, css, javascript)
+                  .row
+                    .col-md-5
+                      .form-group                        
+                        label.custom-label(for='readtime') Approximate Read Time
+                        .input-group
+                          input#readtime(type='number' name="readtime" placeholder='Estimated Time' class=((validationErrors && postReadTimeErrMsg) ? 'form-control custom-form-control form-control-lg is-invalid' : 'form-control custom-form-control form-control-lg') value=((oldInput && oldInput.postTags != undefined) ? oldInput.postReadTime : (editing) ? post.readtime : ''))
+                          .input-group-append
+                            span.input-group-text minute(s)
+                        if postReadTimeErrMsg && validationErrors
+                          .invalid-feedback #{postReadTimeErrMsg}
+                    .offset-lg-1
+                    .col-md-7.col-lg-6.d-lg-flex.align-items-center
+                      .form-group
+                        .custom-control.custom-checkbox
+                          - var featuredCheckedAttr = (editing && post.featured == true) ? 'checked' : '';
+                          if editing
+                            input#featured(type="checkbox" name="featured" class="custom-control-input" value="true" checked=post.featured==true)
+                          else 
+                            input#featured(type="checkbox" name="featured" class="custom-control-input" value="true")
+                          label.custom-control-label(for="featured") Featured 
+                        small 
+                          b Note: 
+                          | featured posts are shown at the top on the front page
+                  .row
+                    .col-md-12
+                      .form-group
+                        label.custom-label Post Content
+                        .ck-form1
+                          textarea#editor1(name='postContent' rows='10' cols='80' class=((validationErrors && postContentErrMsg) ? 'form-control custom-form-control form-cousername is-invalid' : 'form-control custom-form-control form-cousername'))
+                            if oldInput && oldInput.postContent != undefined 
+                              | #{oldInput.postContent} 
+                            else if editing
+                              | #{post.content}
+                            else
+                              | Post content goes in here
+                          if postContentErrMsg && validationErrors
+                            .invalid-feedback #{postContentErrMsg}              
+                  .row
+                    .update.ml-auto.mr-auto
+                      if editing
+                        input(type="hidden", name="postId" value=post._id)
+                      input(type="hidden", name="_csrf" value=csrfToken)
+                      input.btn.btn-primary.btn-round(type='submit' name="publishBtn" value="Publish") 
+                      input.btn.btn-info.btn-round(type='submit' name="draftBtn" value=(isDraft ? "Save Draft" : "Save as Draft")) 

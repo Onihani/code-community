@@ -1,0 +1,113 @@
+extends ../layouts/author-main-layout.pug
+
+block mainContent
+  .content
+    // stat cards
+    .row
+      .col-md-6.col-lg-4
+        .card.custom-card.card-stats
+          .card-body
+            .row
+              .col-5.col-md-4
+                .icon-big.text-center.icon-warning
+                  i.fal.fa-newspaper.text-warning
+              .col-7.col-md-8
+                .numbers
+                  p.card-category Posts
+                  p.card-title #{totalPosts}
+                  p
+          .card-footer
+            hr
+            .stats
+              a.text-default(href="/author/posts")
+                i.far.fa-angle-double-right.mr-1
+                | view all posts
+      .col-md-6.col-lg-4
+        .card.custom-card.card-stats
+          .card-body
+            .row
+              .col-5.col-md-4
+                .icon-big.text-center.icon-warning
+                  i.fal.fa-chart-line.text-success
+              .col-7.col-md-8
+                .numbers
+                  p.card-category Posts Views
+                  p.card-title #{totalPostViews}
+                  p
+          .card-footer
+            hr
+            .stats
+              a.text-default(href="/author/insights")
+                i.far.fa-angle-double-right.mr-1
+                | view post insights
+      .col-md-6.col-lg-4
+        .card.custom-card.card-stats
+          .card-body
+            .row
+              .col-5.col-md-4
+                .icon-big.text-center.icon-warning
+                  i.far.fa-archive.text-info
+              .col-7.col-md-8
+                .numbers
+                  p.card-category Drafts
+                  p.card-title #{totalDrafts}
+                  p
+          .card-footer
+            hr
+            .stats
+              a.text-default(href="/author/drafts")
+                i.far.fa-angle-double-right.mr-1
+                | view all Drafts
+    // recent posts
+    .row
+      .col-md-12
+        .card.custom-card
+          .card-header
+            h5.card-title Recent Posts
+            p.card-category
+              | Showing Recently Created / Edited Posts
+          .card-body
+            .container-fluid
+              // posts area
+              if Array.isArray(posts) && posts.length
+                .grid
+                  .grid-sizer
+                  each post in posts
+                    .grid-item
+                      .card
+                        .view.overlay
+                          img.card-img-top(src=("/" + post.imageUrl) alt=post.title)
+                          a(href='/author/single-post/' + post._id)
+                            .mask.rgba-white-slight
+                        .card-body
+                          .post-detials.clearfix
+                            small.float-left Posted on
+                            small.float-right #{prettifyDate(post.postTime.dataAdded)}
+                          h5.card-title.h5 #{post.title}
+                          p.card-text
+                            | #{post.summary}
+                          .stats.clearfix
+                            small.float-left
+                              i.far.fa-clock.mr-1
+                              | last edited #{timeSinceDate(post.postTime.lastModified)} ago
+                            small.post-views.float-right
+                              i.far.fa-eye
+                              | 8 views
+                        .card-footer.p-1
+                          hr.my-0
+                          .recent-post-actions.clearfix
+                            a.btn.btn-primary.btn-sm(href=('/author/edit-post/' + post._id + '?edit=true'))
+                              i.fas.fa-edit.mr-1
+                              |  Edit
+                            a.btn.btn-info.btn-sm.float-right(href='/author/single-post/' + post._id)
+                              i.fal.fa-angle-double-right.mr-1
+                              |  View
+              else
+                h2.text-warning No posts found 
+                p.lead You haven't added any posts yet
+                  
+          //- .card-footer
+          //-   hr
+          //-   .stats
+          //-     i.fa.fa-history
+          //-     |  Updated 3 minutes ago

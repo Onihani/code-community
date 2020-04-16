@@ -1,0 +1,17 @@
+/* =========== Utilities =========== */
+/* =========== /Utilitites =========== */
+
+header {
+  background: url("https://source.unsplash.com/collection/9905932/1200x900");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+header .overlay .rgba-black-dark {
+  background-image: rgba(0, 0, 0, 0.4);
+}
+
+main {
+  background-image: paint(checker);
+}

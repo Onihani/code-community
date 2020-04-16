@@ -1,0 +1,12 @@
+.single-post-image {
+  height: 350px;
+  background-size: cover;
+  background-repeat: no-repeat !important;
+}
+
+.single-post-author-avatar {
+  width: 90px;
+  height: 90px;
+  margin-left: auto;
+  margin-right: auto;
+}

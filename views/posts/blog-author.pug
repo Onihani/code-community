@@ -1,0 +1,111 @@
+extends ../layouts/main-layout.pug
+  
+block customCss
+  link(rel='stylesheet' href='/css/main-blog.css')
+  link(rel='stylesheet' href='/css/blog-posts.css')
+
+block assertJs
+  // Masonry
+  script(type='text/javascript' src='/asserts/mdb4/js/addons/masonry.pkgd.min.js' defer='')
+  script(type='text/javascript' src='/asserts/mdb4/js/addons/imagesloaded.pkgd.min.js' defer='')
+
+block customJs
+  script(src='/js/blog-author.js' defer='')
+
+block navbar
+  // Navbar
+  nav#mainNavbar.navbar.navbar-color-on-scroll.navbar-expand-lg.navbar-light.px-5.py-3.mb-3
+    .container
+      .navbar-translate
+        a.navbar-brand.text-reste(href='/')
+          | Blogy
+        button.navbar-toggler.navbar-toggler-main(type='button' data-toggle='collapse' aria-expanded='false' aria-label='Toggle navigation' data-target='#sectionsNav')
+          span.sr-only Toggle navigation
+          span.navbar-toggler-icon
+          span.navbar-toggler-icon
+          span.navbar-toggler-icon
+      #sectionsNav.collapse.navbar-collapse
+        ul.navbar-nav.ml-auto
+          li.button-container.dropdown.nav-item.mr-lg-2
+            a.btn.btn-info.btn-round.btn-block.dropdown-toggle(href='' target='_blank' data-toggle='dropdown')
+              | Login as
+            .dropdown-menu.dropdown-with-icons
+              a.dropdown-item.mx-2(href='/author')
+                strong Author
+                | &nbsp;to manage articles
+              a.dropdown-item.mx-2(href='/comment')
+                strong Member
+                | &nbsp;to comment
+          li.button-container.nav-item
+            a.btn.btn-pink.btn-round.btn-block(href='/community' target='_blank')
+              i.material-icons forum
+              |  Community
+  // /.Navbar
+  
+block mainContent
+  .section
+    .container
+      .row
+        .col-md-11.mx-auto
+          // Post Author Section
+          h2.title Author
+          .card.card-plain.mt-5
+            // Author Profile card
+            .row
+              .col-md-9.col-lg-6.mx-auto
+                .card.mb-5.border-0.shadow-none
+                  .card-header.p-0.border-0(style='z-index: 1000; position: relative;')
+                    img.img-fluid.z-depth-2(src=author.profileImages.avatarImg alt='Auhtor Avatar' style='width: 100%; max-height: 300px; border-radius: 8px;')
+                  .card-body(style='margin-top: -50px;')
+                    .row
+                      .col-11.col-md-11.z-depth-1.mx-auto.rounded.text-center(style='padding-top: 40px; padding-bottom: 30px;')
+                        h4.card-title.title #{author.name}
+                        p.card-text.text-muted
+                          | #{author.about}
+                        .follow-author
+                          h6.title.mb-3 Get Interactive
+                          .d-flex.justify-content-center.justify-items-center.font-18
+                            a.px-2.fa-lg.li-ic.mx-sm-2.text-primary(href=author.socialHandles.handles.facebook target="_blank")
+                              i.fab.fa-facebook-f
+                            a.px-2.fa-lg.li-ic.mx-sm-2.text-info(href=author.socialHandles.handles.twitter target="_blank")
+                              i.fab.fa-twitter
+                            a.px-2.fa-lg.li-ic.mx-sm-2.text-danger(href=author.socialHandles.handles.instagram target="_blank")
+                              i.fab.fa-instagram
+            // /Author Profile card
+            // Posts From Author
+            h3.title
+              | Posts From 
+              b #{author.name}
+            .owl-carousel.my-5
+              each post in authorPosts
+                .py-2.px-custom-4.border.rounded.shadow
+                  .card.card-plain
+                    .card-header.bg-white.p-0.border-0
+                      a.card-header-img(href=('/posts/singlepost/' + post._id))
+                        img.img-raised.effect5.img-fuild(src=('/' + post.imageUrl) alt='Article Image')
+                    .card-body
+                      h6.card-category.mt-0
+                        a.grey-text.text-uppercase(href=('/posts?category=' + post.category))
+                          small Programming
+                      h4.card-title.font-18
+                        a.text-reset(href=('/posts/singlepost/' + post._id)) #{post.title}
+                      p.card-tags
+                        each tag in post.tags
+                          a(href=('/posts?withtag=' + tag))
+                            span.badge.badge-pill #{tag}
+                      p.card-description
+                        | #{post.summary} 
+                        a.purple-text(href=('/posts/singlepost/' + post._id)) Read More 
+                      .clearfix
+                        .author.float-left.d-flex.justify-content-center.align-items-center
+                          a(href=('/posts/author/' + post.author._id))
+                            img.rounded-circle.post-author-img.border.mr-2(src=post.author.profileImages.avatarImg alt='author')
+                          a.text-default(href=('/posts/author/' + post.author._id))
+                            b #{author.name}
+                        .read-time.float-right.text-muted
+                          i.fal.fa-watch.mr-1
+                          | #{post.readtime} mins read
+            .text-center
+              a.btn.btn-pink.btn-sm.btn-raised.btn-round(href=('/posts?author=' + author._id))
+                | View All
+            // /Post From Author

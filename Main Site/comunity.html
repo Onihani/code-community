@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Blogy | Home</title>
+    <!-- ========== CSS ========= -->
+     <!-- Fonts -->
+     <link
+        href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200"
+        rel="stylesheet"
+      />
+      <!-- Bootstrap core CSS -->
+      <link rel="stylesheet" href="asserts/mdb4/css/bootstrap.min.css" />
+      <!-- Material Design Bootstrap -->
+      <link rel="stylesheet" href="asserts/mdb4/css/mdb.min.css" />
+      <!-- Font Awesome -->
+      <link rel="stylesheet" href="asserts/fontawesome/css/all.css" />
+      <!-- Animate Css -->
+      <link rel="stylesheet" href="asserts/animatecss/animate.css" />
+      <!-- Material Icons -->
+      <link
+        href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        rel="stylesheet"
+      />
+      <!-- Owl Carousel -->
+      <!-- <link rel="stylesheet" href="asserts/owlcarousel/assets/owl.carousel.min.css"> -->
+      <!-- <link rel="stylesheet" href="asserts/owlcarousel/assets/owl.theme.default.min.css"> -->
+    <!-- Custom -->
+    <link rel="stylesheet" href="./css/main-blog.css" />
+    <link rel="stylesheet" href="./css/community.css" />
+
+    <!-- ========== JS ========== -->
+    <script
+      type="text/javascript"
+      src="asserts/mdb4/js/jquery.min.js"
+      defer
+    ></script>
+    <!-- Bootstrap tooltips -->
+    <script
+      type="text/javascript"
+      src="asserts/mdb4/js/popper.min.js"
+      defer
+    ></script>
+    <!-- Bootstrap core JavaScript -->
+    <script
+      type="text/javascript"
+      src="asserts/mdb4/js/bootstrap.min.js"
+      defer
+    ></script>
+    <!-- MDB core JavaScript -->
+    <script
+      type="text/javascript"
+      src="asserts/mdb4/js/mdb.min.js"
+      defer
+    ></script>
+    <!-- Owl Carousel -->
+    <!-- <script src="asserts/owlcarousel/owl.carousel.min.js" defer></script> -->
+    <!-- Custom -->
+    <!-- <script type="text/javascript" src="./js/main-blog.js" defer></script> -->
+  </head>
+  <body>
+    <header class="z-depth-3">
+      <div class="overlay rgba-black-light">
+        <!--Navbar-->
+        <nav class="navbar navbar-color-on-scroll navbar-expand-lg navbar-transparent px-5 py-3 mb-3 shadow-none" id="mainNavbar">
+          <div class="container">
+            <div class="navbar-translate">
+                <a class="navbar-brand text-white" href="/">
+                  Blogy
+                </a>
+                <button class="navbar-toggler navbar-toggler-main" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation" data-target="#sectionsNav">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="navbar-toggler-icon"></span>
+                  <span class="navbar-toggler-icon"></span>
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="sectionsNav">
+                <ul class="navbar-nav ml-auto">
+                  <li class="button-container dropdown nav-item mr-lg-2">
+                    <a href="" target="_blank" class="btn btn-info btn-round btn-block dropdown-toggle" data-toggle="dropdown">
+                      Login as
+                    </a>
+                    <div class="dropdown-menu dropdown-with-icons">
+                        <form method="get" action="https://material-blog-pro-laravel.creative-tim.com/login" style="display: none;" id="loginForm">
+                            <input type="text" value="" name="role" id="roleType">
+                        </form>
+                        <a href="#" class="dropdown-item mx-2" onclick="document.getElementById('roleType').value='2';
+                          document.getElementById('loginForm').submit();">
+                            <strong>Author</strong>&nbsp;to manage articles
+                        </a>
+                        <a href="#" class="dropdown-item mx-2" onclick="document.getElementById('roleType').value='3';
+                          document.getElementById('loginForm').submit();">
+                            <strong>Member</strong>&nbsp;to comment
+                        </a>
+                    </div>
+                    </li>
+                    <li class="button-container nav-item">
+                      <a href="#" target="_blank" class="btn btn-pink btn-round btn-block">
+                        <i class="material-icons">forum</i> Community
+                      </a>
+                    </li>
+                </ul>
+            </div>
+          </div>
+        </nav>
+        <!--/.Navbar-->
+
+        <!-- Jumbotron -->
+        <div class="jumbotron jumbotron-fluid text-center rounded-none bg-transparent shadow-none">
+          <div class="container py-4">
+            <h2 class="display-4 title text-white">Join Our Community</h2>
+            <p class="lead text-light">Lets get social. Join any of our social communities and lets learn from each other</p>
+            <a href="#" class="btn btn-pink rounded-none">Join Community</a>
+          </div>
+        </div>
+        <!-- Jumbotron -->
+      </div>
+    </header>
+    
+    <main>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-10 col-lg-11">
+            <div class="container">
+              <h1>Hello Community</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+
+  <script>
+    CSS.paintWorklet.addModule('./js/worklet.js')
+  </script>
+</html>

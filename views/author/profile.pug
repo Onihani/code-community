@@ -1,0 +1,126 @@
+extends ../layouts/author-main-layout.pug
+
+block mainContent
+  .content
+    // Profile
+    .row
+      .col-md-4
+        .card.custom-card.card-user
+          .image
+            img(src='https://source.unsplash.com/random/?city,night' alt='...')
+          .card-body
+            .author
+              a(href='#')
+                img.avatar.border-gray(src=((author.profileImages.avatarImg) ? author.profileImages.avatarImg : 'https://source.unsplash.com/random/?avatar,profile') alt='Avatar')
+                h5.title #{author.name}
+              p.description
+                | @#{author.username}
+            p.description.text-center
+              | &quot;#{author.about}&quot;
+          .card-footer
+            hr
+            .button-container
+              h6.text-center Reach Me Via
+              .row
+                .col-lg-3.col-md-6.col-6.ml-auto
+                  a(class=((author.socialHandles.handles.facebook) ? 'social-icon n' : 'social-icon disabled') href=((author.socialHandles.handles.facebook) ? author.socialHandles.handles.facebook : '') target='_blank')
+                    i.fab.fa-facebook-f.fa-2x
+                .col-lg-4.col-md-6.col-6.ml-auto.mr-auto
+                  a(class=((author.socialHandles.handles.twitter) ? 'social-icon n' : 'social-icon disabled') href=((author.socialHandles.handles.twitter) ? author.socialHandles.handles.twitter : '') target='_blank')
+                    i.fab.fa-twitter.fa-2x
+                .col-lg-3.mr-auto
+                  a(class=((author.socialHandles.handles.instagram) ? 'social-icon n' : 'social-icon disabled') href=((author.socialHandles.handles.instagram) ? author.socialHandles.handles.instagram : '') target='_blank')
+                    i.fab.fa-instagram.fa-2x
+      .col-md-8
+        .card.card-user.custom-card
+          .card-header.profile-header
+            h5.card-title Edit Profile
+          .card-body
+            form(action="/author/profile" method="post")
+              .row
+                .col-md-5.pr-1
+                  .form-group
+                    label.custom-label Username
+                    input(type='text' placeholder='Username' name="username" class=((validationErrors && usernameErrMsg) ? 'form-control custom-form-control is-invalid' : 'form-control custom-form-control' ) value=((oldInput && oldInput.username != undefined) ? oldInput.username : (author) ? author.username : ''))
+                    if usernameErrMsg && validationErrors
+                      .invalid-feedback #{usernameErrMsg}
+                .col-md-7.pl-1
+                  .form-group
+                    label.custom-label(for='exampleInputEmail1') Email address
+                    input(type='email' placeholder='Email' name="email" class=((validationErrors && emailErrMsg) ? 'form-control custom-form-control is-invalid' : 'form-control custom-form-control' ) value=((oldInput && oldInput.email != undefined) ? oldInput.email : (author) ? author.email : ''))
+                    if emailErrMsg && validationErrors
+                      .invalid-feedback #{emailErrMsg}
+              .row
+                .col-md-6.pr-1
+                  .form-group
+                    label.custom-label First Name
+                    input.form-control.custom-form-control(type='text' placeholder='firstname' name="firstname" class=((validationErrors && firstnameErrMsg) ? 'form-control custom-form-control is-invalid' : 'form-control custom-form-control' ) value=((oldInput && oldInput.firstname != undefined) ? oldInput.firstname : (author) ? author.name.split(" ")[0] : ''))
+                    if firstnameErrMsg && validationErrors
+                      .invalid-feedback #{firstnameErrMsg}
+                .col-md-6.pl-1
+                  .form-group
+                    label.custom-label Last Name
+                    input.form-control.custom-form-control(type='text' placeholder='Last Name' name="lastname" class=((validationErrors && lastnameErrMsg) ? 'form-control custom-form-control is-invalid' : 'form-control custom-form-control' ) value=((oldInput && oldInput.lastname != undefined) ? oldInput.lastname : (author) ? author.name.split(" ")[1] : ''))
+                    if lastnameErrMsg && validationErrors
+                      .invalid-feedback #{lastnameErrMsg}
+              .row
+                .col-md-12
+                  .form-group
+                    label.custom-label Address
+                    input.form-control.custom-form-control(type='text' placeholder='Home Address' name="address" value=((author) ? author.location.address : ''))
+              .row
+                .col-md-4.pr-1
+                  .form-group
+                    label.custom-label City
+                    input.form-control.custom-form-control(type='text' placeholder='City' name="city" value=((author) ? author.location.city : ''))
+                .col-md-4.px-1
+                  .form-group
+                    label.custom-label Country
+                    input.form-control.custom-form-control(type='text' placeholder='Country' name="country" value=((author) ? author.location.country : ''))
+                .col-md-4.pl-1
+                  .form-group
+                    label.custom-label Postal Code
+                    input.form-control.custom-form-control(type='number' placeholder='ZIP Code' name="zipcode" value=((author) ? author.location.zipcode : ''))
+              .row
+                .col-md-12
+                  .form-group
+                    label.custom-label About Me
+                    textarea.form-control.custom-form-control.textarea(name="about")
+                      if author
+                        | #{author.about}
+              .profile-social-handles
+                h6 Profile Images  
+                .row
+                  .col-md-6.pr-1
+                    .form-group
+                      label.custom-label Header Image
+                      input.form-control.form-control-sm.custom-form-control(type="text", name="headerImage" placeholder="Link To Header Image Here" value=((author && author.profileImages.headerImg) ? author.profileImages.headerImg : 'Random Images'))
+                  .col-md-6.pl-1
+                    .form-group
+                      label.custom-label Avatar Image
+                      input.form-control.form-control-sm.custom-form-control(type="text", name="avatarImage" placeholder="Link To Avatar Image Here" value=((author && author.profileImages.avatarImg) ? author.profileImages.avatarImg : 'Default Avatar Image'))
+              .profile-social-handles
+                h6 Social Handles  
+                .row
+                  .col-md-12
+                    .form-group
+                      label.custom-label Facebook
+                      input.form-control.form-control-sm.custom-form-control(type='text' placeholder='eg: https://www.facebook.com/[username]' name="socialFacebook" value=((author) ? author.socialHandles.handles.facebook : ''))
+                  .col-md-12
+                    .form-group
+                      label.custom-label Twitter
+                      input.form-control.form-control-sm.custom-form-control(type='text' placeholder='eg: https:/twiiter.com/[username]' name="socialTwitter" value=((author) ? author.socialHandles.handles.twitter : ''))
+                  .col-md-12
+                    .form-group
+                      label.custom-label Instagram
+                      input.form-control.form-control-sm.custom-form-control(type='text' placeholder='eg: https:/instagram.com/[username]' name="socialInstagram" value=((author) ? author.socialHandles.handles.instagram : ''))
+              .row
+                .update.ml-auto.mr-auto
+                  input(type="hidden", name="_csrf" value=csrfToken)
+                  button.btn.btn-primary.btn-round(type='submit') Update Profile
+
+  if flashMessage
+    div.col-11.col-md-4.alert.alert-info.alert-dismissible.fade.show.animated.slideInDown(role='alert' data-notify-position='top-right')
+      |  #{flashMessage}
+      button.close(type='button' data-dismiss='alert' aria-label='Close')
+        span(aria-hidden='true') &times;
