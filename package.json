@@ -6,6 +6,9 @@
     "android.permission.READ_EXTERNAL_STORAGE"
   ],
   "version": "1.0.0",
+  "engines": {
+    "node": "12.16.1"
+  },
   "description": "A project to study nodejs/expressjs",
   "main": "app.js",
   "scripts": {
